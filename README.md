@@ -3,7 +3,7 @@
 Website for **Universal Judges (UniJudge): Reliable Judging Across Languages and Modalities**,
 a full-day workshop at ACM TRUST 2027 (Washington, DC, March 7–9, 2027).
 
-Live site: https://unijudge.github.io/
+Live site: https://acmtrustunijudge.github.io/
 
 ## Editing
 
