@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>UniJudge Workshop at ACM TRUST 2027</title>
+<meta name="description" content="UniJudge: Reliable Judging Across Languages and Modalities. A full-day workshop at ACM TRUST 2027, Washington, DC, March 7–9, 2027. Call for papers open.">
+<link rel="canonical" href="https://unijudge.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="UniJudge @ ACM TRUST 2027: Reliable Judging Across Languages and Modalities">
+<meta property="og:description" content="Call for papers on the reliability of AI judges across languages, modalities and representations. Washington, DC, March 7–9, 2027.">
+<meta property="og:url" content="https://unijudge.github.io/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%96%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    color-scheme: light;
+    --ground:#f4f6f9;
+    --paper:#ffffff;
+    --ink:#121826;
+    --ink-2:#4a5468;
+    --ink-3:#7f889b;
+    --line:#e2e6ee;
+    --line-2:#d0d6e2;
+    --a:#3b48d6;
+    --a-deep:#2a33a3;
+    --b:#0b8f82;
+    --b-deep:#086b62;
+    --warn:#c9700a;
+    --wash-a:#eef0ff;
+    --wash-b:#e8f7f4;
+    --bar:rgba(255,255,255,.86);
+    --shadow:0 1px 2px rgba(18,24,38,.05);
+    --shadow-2:0 4px 16px rgba(18,24,38,.07);
+    --glow-a:rgba(59,72,214,.10);
+    --glow-b:rgba(11,143,130,.11);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme: dark;
+      --ground:#0f131c;
+      --paper:#161b27;
+      --ink:#eef1f7;
+      --ink-2:#b4bccc;
+      --ink-3:#808a9e;
+      --line:#262d3d;
+      --line-2:#343c50;
+      --a:#8790ff;
+      --a-deep:#aab1ff;
+      --b:#3fcbb8;
+      --b-deep:#6fdccd;
+      --warn:#f0a43c;
+      --wash-a:#1d2240;
+      --wash-b:#132c2b;
+      --bar:rgba(15,19,28,.84);
+      --shadow:0 1px 2px rgba(0,0,0,.3);
+      --shadow-2:0 6px 20px rgba(0,0,0,.35);
+      --glow-a:rgba(135,144,255,.12);
+      --glow-b:rgba(63,203,184,.10);
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --ground:#0f131c;
+    --paper:#161b27;
+    --ink:#eef1f7;
+    --ink-2:#b4bccc;
+    --ink-3:#808a9e;
+    --line:#262d3d;
+    --line-2:#343c50;
+    --a:#8790ff;
+    --a-deep:#aab1ff;
+    --b:#3fcbb8;
+    --b-deep:#6fdccd;
+    --warn:#f0a43c;
+    --wash-a:#1d2240;
+    --wash-b:#132c2b;
+    --bar:rgba(15,19,28,.84);
+    --shadow:0 1px 2px rgba(0,0,0,.3);
+    --shadow-2:0 6px 20px rgba(0,0,0,.35);
+    --glow-a:rgba(135,144,255,.12);
+    --glow-b:rgba(63,203,184,.10);
+  }
+
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .art{opacity:1;filter:brightness(1.5) saturate(1.1);} }
+  :root[data-theme="dark"] .art{opacity:1;filter:brightness(1.5) saturate(1.1);}
+  :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);}
+  html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);background:var(--ground);}
+  *,*::before,*::after{box-sizing:border-box;}
+  body{
+    margin:0;background:var(--ground);color:var(--ink);
+    font:400 16.5px/1.6 "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bar);backdrop-filter:blur(10px);}
+  img,svg{max-width:100%;}
+  .shell{max-width:1060px;margin:0 auto;padding:0 26px;}
+  h1,h2,h3{font-family:"Bricolage Grotesque","IBM Plex Sans",system-ui,sans-serif;font-weight:700;letter-spacing:-.022em;text-wrap:balance;margin:0;}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;}
+
+  /* top bar */
+  .bar{border-bottom:1px solid var(--line);background:var(--bar);position:sticky;top:env(safe-area-inset-top,0px);z-index:20;backdrop-filter:blur(10px);}
+  .bar .shell{display:flex;align-items:center;gap:18px;height:60px;}
+  .mark{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:17px;letter-spacing:-.02em;color:var(--ink);}
+  .mark i{font-style:normal;color:var(--b);}
+  .venue{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);border-left:1px solid var(--line-2);padding-left:18px;}
+  .bar .sp{flex:1;}
+  .cta{
+    display:inline-block;text-decoration:none;
+    font-family:"Bricolage Grotesque","IBM Plex Sans",sans-serif;font-size:15.5px;font-weight:700;letter-spacing:-.008em;line-height:1.15;
+    color:#ffffff;background:linear-gradient(96deg,#3b48d6,#0b8f82);
+    padding:12px 24px;border-radius:999px;white-space:nowrap;box-shadow:0 2px 10px rgba(30,80,170,.22);
+    transition:filter .16s ease, transform .08s ease;
+  }
+  .cta:hover{filter:brightness(1.08);}
+  .cta:active{transform:translateY(1px);}
+  .cta:focus-visible{outline:2px solid var(--b);outline-offset:3px;}
+  .cta.cta-big{font-size:18px;padding:15px 32px;}
+
+  /* hero */
+  .hero{position:relative;padding:66px 0 0;overflow:hidden;}
+  .hero::before{content:"";position:absolute;inset:-40% -20% auto -20%;height:600px;
+    background:radial-gradient(46% 52% at 22% 34%, var(--glow-a), transparent 68%),radial-gradient(44% 50% at 76% 26%, var(--glow-b), transparent 70%);pointer-events:none;}
+  .hero .shell{position:relative;}
+  .eyebrow{font-size:11.5px;letter-spacing:.19em;text-transform:uppercase;color:var(--b-deep);font-weight:600;margin:0 0 20px;}
+  h1{font-size:clamp(37px,6.2vw,66px);line-height:1.03;max-width:15ch;}
+  h1 em{font-style:normal;background:linear-gradient(94deg,var(--a),var(--b) 75%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub{margin:16px 0 0;font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:clamp(18px,2.2vw,23px);letter-spacing:-.012em;color:var(--ink-2);}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:40px;align-items:center;}
+  .art-wrap{min-width:0;}
+  .art{display:block;width:100%;height:auto;opacity:.88;}
+  .stand{margin:26px 0 0;max-width:60ch;font-size:18.5px;line-height:1.6;color:var(--ink-2);}
+  .heroact{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:30px 0 0;}
+  .heroact .note{font-size:14px;color:var(--ink-3);}
+
+  /* consistency demo */
+  .tl-frame{margin:48px 0 0;position:relative;border:1px solid var(--line);border-radius:14px;background:var(--paper);box-shadow:var(--shadow-2);padding:18px 20px 14px;overflow:hidden;}
+  .tl-cap{display:flex;align-items:baseline;gap:16px;margin-bottom:12px;flex-wrap:nowrap;}
+  .tl-cap .t{flex:0 0 auto;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--b-deep);font-weight:600;white-space:nowrap;padding-right:16px;border-right:1px solid var(--line);}
+  .tl-cap .d{flex:1 1 auto;font-size:13px;color:var(--ink-2);}
+  .cvwrap{position:relative;height:216px;}
+  canvas{display:block;width:100%;height:216px;}
+  .legend{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:14px;padding-top:13px;border-top:1px solid var(--line);}
+  .lg{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--ink-2);}
+  .lg .sw{width:11px;height:11px;border-radius:3px;flex:0 0 11px;}
+  .lg .dash{width:18px;height:0;border-top:2px dashed var(--ink-3);flex:0 0 18px;}
+  .lg .illus{color:var(--ink-3);font-size:12.5px;}
+
+  /* sections */
+  section{padding:78px 0 0;}
+  .k{font-size:11.5px;letter-spacing:.19em;text-transform:uppercase;color:var(--b-deep);font-weight:600;margin:0 0 26px;}
+  .why{max-width:66ch;}
+  .why p{margin:0 0 16px;color:var(--ink-2);}
+  .why p:last-child{margin-bottom:0;}
+  .why b{color:var(--ink);font-weight:600;}
+
+  /* topics */
+  .themes{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .theme{border:1px solid var(--line);border-radius:14px;padding:22px 20px;background:var(--paper);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px;}
+  .th-head{display:flex;align-items:baseline;gap:11px;}
+  .theme .rn{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.1em;color:var(--a);flex:0 0 auto;min-width:28px;}
+  .theme h3{font-size:17.5px;line-height:1.28;letter-spacing:-.015em;}
+  .theme ul{list-style:none;margin:2px 0 0;padding:0;display:flex;flex-direction:column;gap:7px;font-size:14px;line-height:1.45;color:var(--ink-2);}
+  .theme li{padding-left:14px;position:relative;}
+  .theme li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--b);opacity:.6;}
+  .also{margin:22px 0 0;max-width:72ch;font-size:15px;color:var(--ink-2);}
+  .also b{color:var(--ink);font-weight:600;}
+
+  /* speakers */
+  .speakers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .sp-card{border:1px solid var(--line);border-radius:14px;padding:22px 20px;background:var(--paper);box-shadow:var(--shadow);position:relative;overflow:hidden;display:flex;flex-direction:column;gap:7px;}
+  .sp-card::after{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:linear-gradient(180deg,var(--a),var(--b));}
+  .sp-card.pending::after{opacity:.25;}
+  .sp-card h3{font-size:18px;letter-spacing:-.015em;}
+  .sp-card .aff{font-size:13.5px;color:var(--ink-3);margin:0;}
+  .state{margin-top:6px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--a-deep);}
+  .sp-card.pending .state{color:var(--ink-3);}
+
+  .panel{margin-top:14px;border:1px solid var(--line);border-radius:14px;padding:22px 22px 20px;background:linear-gradient(120deg,var(--wash-a),var(--wash-b));}
+  .panel h3{font-size:20px;letter-spacing:-.016em;}
+  .panel .lead{margin:6px 0 16px;font-size:14px;color:var(--ink-2);}
+  .pl{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{display:inline-flex;align-items:baseline;gap:7px;font-size:14px;padding:7px 13px;border-radius:999px;background:var(--paper);border:1px solid var(--line);color:var(--ink);}
+  .chip span{font-size:12.5px;color:var(--ink-3);}
+  .chip.pending{border-style:dashed;color:var(--ink-2);}
+
+  /* program */
+  .prog{border:1px solid var(--line);border-radius:14px;background:var(--paper);box-shadow:var(--shadow);overflow:hidden;}
+  .row{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:13px 22px;border-top:1px solid var(--line);align-items:baseline;}
+  .row:first-child{border-top:none;}
+  .row time{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink-3);letter-spacing:.02em;}
+  .row .what{font-size:15.5px;color:var(--ink);}
+  .row .what small{display:block;font-size:13.5px;color:var(--ink-2);margin-top:3px;line-height:1.45;}
+  .row.brk .what{color:var(--ink-3);}
+  .row.hl{background:linear-gradient(90deg,var(--wash-a),transparent 70%);}
+
+  /* call */
+  .call{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .call .box{border:1px solid var(--line);border-radius:14px;padding:22px 20px;background:var(--paper);box-shadow:var(--shadow);}
+  .call h3{font-size:17.5px;letter-spacing:-.015em;margin-bottom:10px;}
+  .call p{margin:0;font-size:14.5px;color:var(--ink-2);line-height:1.55;}
+
+  /* organizers */
+  .orgs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .org{display:flex;align-items:center;gap:16px;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--paper);box-shadow:var(--shadow);}
+  .ava{position:relative;flex:0 0 72px;width:72px;height:72px;border-radius:10px;background:linear-gradient(140deg,var(--wash-a),var(--wash-b));border:1px solid var(--line-2);overflow:hidden;display:flex;align-items:center;justify-content:center;}
+  .ava::before{content:attr(data-initials);font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:23px;color:var(--a-deep);}
+  .ava img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+  .who{display:flex;flex-direction:column;gap:4px;min-width:0;}
+  .org b{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:17px;letter-spacing:-.016em;color:var(--ink);line-height:1.2;}
+  .org .aff{font-size:13px;color:var(--ink-3);line-height:1.35;}
+  .org .role{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--b-deep);}
+
+  /* footer */
+  footer{margin-top:84px;border-top:1px solid var(--line);background:var(--paper);padding:48px 0 56px;}
+  .foot{display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap;}
+  .foot p{margin:0;color:var(--ink-2);font-size:16px;max-width:46ch;}
+  .foot .mono{display:block;margin-top:8px;font-size:12.5px;color:var(--ink-3);letter-spacing:.03em;}
+
+  /* nav */
+  .nav{display:flex;gap:4px;}
+  .nav a{font-size:14px;color:var(--ink-2);text-decoration:none;padding:7px 10px;border-radius:8px;}
+  .nav a:hover{color:var(--ink);background:var(--wash-a);}
+  .nav a:focus-visible{outline:2px solid var(--b);outline-offset:2px;}
+  .ghost{display:inline-block;text-decoration:none;font-weight:600;font-size:15px;color:var(--a-deep);padding:11px 4px;border-bottom:1.5px solid currentColor;line-height:1.1;}
+  .ghost:hover{color:var(--b-deep);}
+
+  /* key dates strip in hero */
+  .keydates{display:flex;flex-wrap:wrap;gap:10px 28px;margin:22px 0 0;padding:14px 0 0;border-top:1px solid var(--line);font-size:14.5px;color:var(--ink-2);}
+  .keydates b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:17px;font-weight:700;letter-spacing:-.012em;color:var(--ink);}
+
+  /* dates */
+  .dates{border:1px solid var(--line);border-radius:14px;background:var(--paper);box-shadow:var(--shadow);overflow:hidden;}
+  .drow{display:grid;grid-template-columns:220px 1fr;gap:18px;padding:15px 22px;border-top:1px solid var(--line);align-items:baseline;}
+  .drow:first-child{border-top:none;}
+  .drow .when{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:17px;letter-spacing:-.012em;color:var(--ink);}
+  .drow.key{background:linear-gradient(90deg,var(--wash-a),transparent 70%);}
+  .drow.key .when{color:var(--a-deep);}
+  .drow .what{font-size:15.5px;color:var(--ink);}
+  .drow .what small{display:block;font-size:13.5px;color:var(--ink-2);margin-top:2px;}
+  .tz{margin:12px 0 0;font-size:13.5px;color:var(--ink-3);}
+
+  /* cfp detail */
+  .cfp-intro{max-width:66ch;margin:0 0 22px;color:var(--ink-2);}
+  .tracks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .track{border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--paper);box-shadow:var(--shadow);}
+  .track h3{font-size:17px;letter-spacing:-.014em;margin-bottom:4px;}
+  .track .len{font-size:13.5px;color:var(--b-deep);font-weight:600;margin:0 0 8px;}
+  .track p{margin:0;font-size:14.5px;color:var(--ink-2);line-height:1.5;}
+  .rules{margin:26px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:12px 40px;}
+  .rule h3{font-size:16px;letter-spacing:-.012em;margin-bottom:4px;}
+  .rule p{margin:0;font-size:14.5px;color:var(--ink-2);line-height:1.55;}
+  .rule a, .stmt a, .contact a{color:var(--a-deep);}
+  .stmt{margin:28px 0 0;padding:18px 22px;border-left:3px solid var(--b);background:var(--wash-b);border-radius:0 10px 10px 0;font-size:15px;color:var(--ink);max-width:78ch;}
+  .submitrow{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:28px 0 0;}
+  .submitrow .note{font-size:14px;color:var(--ink-3);}
+
+  /* pc + contact */
+  .pc{display:flex;flex-wrap:wrap;gap:8px;}
+  .pc-more{margin:14px 0 0;font-size:14.5px;color:var(--ink-2);}
+  .contact{margin:0;font-size:16px;color:var(--ink-2);max-width:66ch;}
+
+  @media (max-width:1000px){ .orgs{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:980px){ .nav{display:none;} }
+  @media (max-width:860px){ .tracks{grid-template-columns:1fr;} .rules{grid-template-columns:1fr;} }
+  @media (max-width:640px){ .drow{grid-template-columns:1fr;gap:2px;padding:13px 16px;} }
+  @media (max-width:900px){
+    .themes{grid-template-columns:1fr 1fr;}
+    .hero-grid{grid-template-columns:1fr;gap:22px;}
+    .art{max-width:460px;opacity:.85;}
+  }
+  @media (max-width:860px){ .speakers{grid-template-columns:1fr 1fr;} .call{grid-template-columns:1fr;} }
+  @media (max-width:760px){ .venue{display:none;} }
+  @media (max-width:640px){
+    .shell{padding:0 18px;}
+    section{padding-top:54px;}
+    .k{margin-bottom:20px;}
+    .hero{padding-top:44px;}
+    .eyebrow{font-size:11px;letter-spacing:.12em;margin-bottom:16px;}
+    .stand{font-size:16.5px;margin-top:18px;}
+    .heroact{gap:14px;margin-top:24px;}
+    .tl-frame{margin-top:34px;padding:14px 14px 10px;}
+    .tl-cap{gap:8px;margin-bottom:10px;}
+    .tl-cap .d{font-size:12.5px;}
+    .cvwrap,canvas{height:176px;}
+    .legend{gap:8px 18px;margin-top:12px;padding-top:11px;}
+    .lg{font-size:12.5px;}
+    .themes{grid-template-columns:1fr;}
+    .theme{padding:18px;gap:10px;}
+    .theme h3{font-size:16.5px;}
+    .orgs{grid-template-columns:1fr;gap:12px;}
+    .row{grid-template-columns:1fr;gap:2px;padding:12px 16px;}
+    .sp-card{padding:18px;}
+    footer{margin-top:62px;padding:40px 0 48px;}
+    .foot p{font-size:15px;}
+  }
+  @media (max-width:560px){
+    .bar .shell{gap:12px;}
+    .mark{font-size:15px;}
+    .bar .cta{font-size:13.5px;padding:9px 17px;}
+    .cta.cta-big{font-size:16.5px;padding:14px 26px;}
+  }
+  @media (max-width:480px){
+    .speakers{grid-template-columns:1fr;}
+    .tl-cap{flex-wrap:wrap;}
+    .tl-cap .t{border-right:none;padding-right:0;}
+    .tl-cap .d{flex:1 1 100%;}
+  }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="shell">
+    <span class="mark">UniJudge<i>.</i></span>
+    <span class="venue">ACM TRUST 2027 &middot; Washington, DC</span>
+    <span class="sp"></span>
+    <nav class="nav" aria-label="Sections">
+      <a href="#call">Call for papers</a>
+      <a href="#dates">Dates</a>
+      <a href="#program">Program</a>
+      <a href="#organizers">Organizers</a>
+    </nav>
+    <a class="cta js-submit" href="#call">Submit a paper</a>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="shell">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Accepted workshop &middot; Washington, DC &middot; March 7&ndash;9, 2027</p>
+        <h1>Universal Judges <em>at ACM TRUST 2027</em></h1>
+        <p class="sub">Reliable judging across languages and modalities</p>
+      </div>
+      <div class="art-wrap">
+<svg class="art" viewBox="0 0 640 340" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Line drawing of a balanced scale: one pan holds letters from several scripts, the other holds an image and a sound wave">
+<defs><linearGradient id="capg" gradientUnits="userSpaceOnUse" x1="60" y1="0" x2="580" y2="0"><stop offset="0" stop-color="#3b48d6"/><stop offset="1" stop-color="#0b8f82"/></linearGradient></defs>
+<g fill="none" stroke="url(#capg)" stroke-linecap="round" stroke-linejoin="round">
+  <!-- finial + pillar -->
+  <circle cx="320" cy="44" r="9" stroke-width="2"/>
+  <path stroke-width="2.4" d="M320 53 V286"/>
+  <path stroke-width="1.2" opacity=".55" d="M313 70 V280 M327 70 V280"/>
+  <!-- pivot + beam (level) -->
+  <path stroke-width="2" d="M306 82 L320 66 L334 82 Z"/>
+  <path stroke-width="2.6" d="M120 82 H520"/>
+  <path stroke-width="1.2" opacity=".5" d="M150 88 H290 M350 88 H490"/>
+  <circle cx="120" cy="82" r="4.5" stroke-width="2"/>
+  <circle cx="520" cy="82" r="4.5" stroke-width="2"/>
+  <!-- chains -->
+  <g stroke-width="1.3" opacity=".7">
+    <path d="M120 87 L64 196 M120 87 L176 196 M120 87 V196"/>
+    <path d="M520 87 L464 196 M520 87 L576 196 M520 87 V196"/>
+  </g>
+  <!-- pans -->
+  <path stroke-width="2.2" d="M58 196 H182 Q120 236 58 196 Z"/>
+  <path stroke-width="2.2" d="M458 196 H582 Q520 236 458 196 Z"/>
+  <!-- right pan: image + waveform -->
+  <rect x="470" y="150" width="44" height="34" rx="4" stroke-width="1.8"/>
+  <path stroke-width="1.6" d="M474 180 L487 165 L496 174 L502 168 L510 180"/>
+  <circle cx="503" cy="158" r="3.2" stroke-width="1.4"/>
+  <path stroke-width="2" d="M524 168 V178 M531 160 V186 M538 152 V192 M545 163 V181 M552 156 V188 M559 166 V176 M566 170 V174"/>
+  <!-- base -->
+  <path stroke-width="2.2" d="M282 286 H358 L374 302 H266 Z"/>
+  <path stroke-width="2.4" d="M40 302 H600"/>
+  <path stroke-width="1.1" opacity=".45" d="M80 314 H560"/>
+  <!-- faint drifting glyph trails -->
+  <g stroke-width="1" opacity=".35" stroke-dasharray="2 6">
+    <path d="M70 140 Q120 112 170 140"/>
+    <path d="M470 132 Q520 106 570 132"/>
+  </g>
+</g>
+<g fill="url(#capg)" font-size="25" text-anchor="middle" font-family="'Noto Sans','Noto Sans Devanagari','Noto Sans CJK SC','Noto Sans Arabic',system-ui,sans-serif">
+  <text x="78" y="190">A</text>
+  <text x="104" y="190">अ</text>
+  <text x="134" y="190">文</text>
+  <text x="163" y="190">ع</text>
+</g>
+</svg>
+      </div>
+    </div>
+    <p class="stand">UniJudge is a full-day workshop at ACM TRUST 2027 asking whether AI judges stay reliable as the systems they evaluate move across languages, modalities and representations &mdash; spanning multilingual and low-resource judges, multimodal judges, their intersection, and cross-representation consistency.</p>
+    <div class="heroact">
+      <a class="cta cta-big" href="#call">Read the call for papers</a>
+      <a class="ghost js-interest" href="#" target="_blank" rel="noopener">Volunteer to review</a>
+    </div>
+    <div class="keydates" id="keydates"></div>
+
+    <div class="tl-frame">
+      <div class="tl-cap">
+        <span class="t">Cross-representation drift</span>
+        <span class="d">One answer, eight meaning-preserving renderings. Its quality never changes &mdash; so neither should the verdict.</span>
+      </div>
+      <div class="cvwrap"><canvas id="cv" aria-label="A chart of one answer scored by an AI judge under eight meaning-preserving representations. The intended verdict stays flat at 8 out of 10, while the judge’s verdict drifts between about 5.4 for speech input and 9.1 for a verbose rewrite."></canvas></div>
+      <div class="legend">
+        <span class="lg"><span class="dash"></span> Intended verdict (meaning unchanged)</span>
+        <span class="lg"><span class="sw" style="background:var(--a)"></span> Judge verdict</span>
+        <span class="lg"><span class="sw" style="background:var(--warn)"></span> Drift</span>
+        <span class="lg illus">Illustrative example</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="shell">
+    <p class="k">Motivation</p>
+    <div class="why">
+      <p>AI judges are becoming a general-purpose evaluation layer: they benchmark models, select checkpoints, gate safety evaluations and inform deployment decisions. Yet most judge methods and benchmarks remain concentrated in <b>English and text-only</b> settings.</p>
+      <p>As AI systems expand across languages and modalities, it is unclear whether judge reliability transfers with them. A judge that performs well on English text may behave differently in another language, fail to use the perceptual evidence it needs, or reward presentation rather than underlying quality.</p>
+      <p>These failure modes are studied separately across trustworthy AI, multilingual NLP, vision, speech and multimodal learning. <b>UniJudge</b> brings those communities together to treat the evaluator itself as an object of auditing and assurance &mdash; comparing failure modes, sharing evaluation protocols and building a common research agenda.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="shell">
+    <p class="k">Topics</p>
+    <div class="themes">
+      <div class="theme"><div class="th-head"><span class="rn">I</span><h3>Multilingual and low-resource judges</h3></div>
+        <ul><li>Cross-lingual consistency and transfer</li><li>Low-resource and underrepresented languages</li><li>Code-switching and transliteration</li><li>Culturally dependent criteria</li></ul></div>
+      <div class="theme"><div class="th-head"><span class="rn">II</span><h3>Multimodal judges</h3></div>
+        <ul><li>Image, document, audio, video and interactive outputs</li><li>Groundedness and hallucination</li><li>Reasoning and evidence use</li></ul></div>
+      <div class="theme"><div class="th-head"><span class="rn">III</span><h3>Multilingual&ndash;multimodal evaluation</h3></div>
+        <ul><li>Multilingual vision&ndash;language and document systems</li><li>Speech and audio across languages</li><li>Transfer across both boundaries</li></ul></div>
+      <div class="theme"><div class="th-head"><span class="rn">IV</span><h3>Cross-representation consistency</h3></div>
+        <ul><li>Translation and modality conversion</li><li>Formatting, verbosity and ordering</li><li>Counterfactual and perturbation tests</li></ul></div>
+    </div>
+    <p class="also">We also welcome work on <b>judge auditing and meta-evaluation</b>, reasoning validity, robustness, bias and calibration, causal faithfulness, multi-judge systems and disagreement, and benchmarks and evaluation protocols with clear implications for these settings.</p>
+  </div>
+</section>
+
+<section>
+  <div class="shell">
+    <p class="k">Invited speakers</p>
+    <div class="speakers">
+      <div class="sp-card"><h3>Dan Roth</h3><p class="aff">Oracle &middot; University of Pennsylvania</p><p class="state">Confirmed</p></div>
+      <div class="sp-card pending"><h3>Devi Parikh</h3><p class="aff">Yutori</p><p class="state">Invited</p></div>
+      <div class="sp-card pending"><h3>Shrikanth Narayanan</h3><p class="aff">University of Southern California</p><p class="state">Invited</p></div>
+    </div>
+    <div class="panel">
+      <h3>Panel: What would it take to build a universal judge?</h3>
+      <p class="lead">Practitioners and researchers on what a judge that holds up across languages and modalities would require.</p>
+      <div class="pl">
+        <span class="chip">Niranjan Uma Naresh <span>Amazon</span></span>
+        <span class="chip">Purusoth Mahendran <span>Thumbtack</span></span>
+        <span class="chip">Sudev Mukherjee <span>Sriti.ai</span></span>
+        <span class="chip pending">Harsh Agrawal <span>Anthropic &middot; invited</span></span>
+        <span class="chip pending">Melvin Johnson <span>Google DeepMind &middot; invited</span></span>
+        <span class="chip pending">Kalika Bali <span>Microsoft &middot; invited</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="program">
+  <div class="shell">
+    <p class="k">Program</p>
+    <div class="prog">
+      <div class="row"><time>09:00&ndash;09:10</time><div class="what">Opening remarks</div></div>
+      <div class="row hl"><time>09:10&ndash;10:00</time><div class="what">Keynote</div></div>
+      <div class="row"><time>10:00&ndash;11:00</time><div class="what">Oral session I</div></div>
+      <div class="row brk"><time>11:00&ndash;11:30</time><div class="what">Coffee break</div></div>
+      <div class="row hl"><time>11:30&ndash;12:30</time><div class="what">Invited talks</div></div>
+      <div class="row brk"><time>12:30&ndash;13:30</time><div class="what">Lunch</div></div>
+      <div class="row"><time>13:30&ndash;14:15</time><div class="what">Oral session II</div></div>
+      <div class="row hl"><time>14:15&ndash;15:00</time><div class="what">Interactive judge stress-test and breakouts<small>Small groups work through multilingual and multimodal judge failure cases, drawn from accepted papers and organizer-curated examples, to compare evaluation criteria and surface open problems.</small></div></div>
+      <div class="row brk"><time>15:00&ndash;15:30</time><div class="what">Coffee break</div></div>
+      <div class="row"><time>15:30&ndash;16:30</time><div class="what">Posters and networking</div></div>
+      <div class="row hl"><time>16:30&ndash;17:15</time><div class="what">Panel: What would it take to build a universal judge?</div></div>
+      <div class="row"><time>17:15&ndash;17:30</time><div class="what">Community synthesis and open problems</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="call">
+  <div class="shell">
+    <p class="k">Call for papers</p>
+    <p class="cfp-intro">We invite submissions on the reliability of AI judges in multilingual or multimodal settings, and on broader questions &mdash; reasoning validity, robustness, calibration, bias, causal faithfulness, judge disagreement, multi-judge systems &mdash; with clear implications for these settings. Negative results, replications, preliminary findings and works in progress are explicitly welcome.</p>
+    <div class="tracks">
+      <div class="track"><h3>Full papers</h3><p class="len js-len-full"></p><p>Completed research: new methods, analyses, benchmarks, datasets or evaluation protocols for auditing and meta-evaluating judges.</p></div>
+      <div class="track"><h3>Short papers and extended abstracts</h3><p class="len js-len-short"></p><p>Position papers, negative results, replications, preliminary findings and works in progress.</p></div>
+      <div class="track"><h3>Junior Spotlight Track</h3><p class="len">Either length</p><p>Dedicated oral slots for students and early-career researchers, with optional pre-workshop feedback from senior researchers. Indicate eligibility when you submit.</p></div>
+    </div>
+    <div class="rules">
+      <div class="rule"><h3>Format</h3><p>PDF in the 2-column <a href="https://www.acm.org/publications/proceedings-template" target="_blank" rel="noopener">ACM sigconf template</a>, following the <a href="https://eigtrust.acm.org/trust2027/authors-guidelines/" target="_blank" rel="noopener">TRUST 2027 author guidelines</a>. References and the GenAI Usage Disclosure section do not count toward the page limit.</p></div>
+      <div class="rule"><h3>Review</h3><p>Double-blind. Remove names, affiliations and identifying acknowledgments, and write self-references in the third person. Each submission receives at least two independent reviews from reviewers matched by expertise; organizers recuse themselves from conflicted submissions.</p></div>
+      <div class="rule"><h3>Presentation</h3><p>At least one author of each accepted paper must register for ACM TRUST 2027 and present the work. The conference is hybrid, and remote presentation follows the conference&rsquo;s virtual participation policies.</p></div>
+      <div class="rule"><h3>Open access</h3><p>ACM publications are fully open access. Papers in the proceedings are covered by ACM Open if the corresponding author&rsquo;s institution participates; otherwise an article processing charge applies. See the <a href="https://eigtrust.acm.org/trust2027/authors-guidelines/#open-access-apcs" target="_blank" rel="noopener">APC details</a>.</p></div>
+    </div>
+    <p class="stmt">Accepted workshop papers will be considered for publication in the TRUST 2027 conference proceedings. Papers selected for inclusion in the proceedings may undergo an additional light review to determine their suitability for publication.</p>
+    <div class="submitrow">
+      <a class="cta cta-big js-submit" href="#" target="_blank" rel="noopener">Submit a paper</a>
+      <span class="note js-submit-note"></span>
+      <a class="ghost" href="UniJudge_TRUST2027_CFP.pdf" download>Download the CFP (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<section id="dates">
+  <div class="shell">
+    <p class="k">Important dates</p>
+    <div class="dates" id="datelist"></div>
+    <p class="tz">All deadlines are 11:59 PM Anywhere on Earth (UTC&minus;12).</p>
+  </div>
+</section>
+
+<section id="organizers">
+  <div class="shell">
+    <p class="k">Organizers</p>
+    <div class="orgs" id="orgs"></div>
+  </div>
+</section>
+
+<section id="committee">
+  <div class="shell">
+    <p class="k">Program committee</p>
+    <div class="pc" id="pc"></div>
+    <p class="pc-more">More members to be announced. Researchers working on low-resource, multilingual or multimodal evaluation who would like to review can <a class="js-interest" href="#" target="_blank" rel="noopener" style="color:var(--a-deep)">volunteer here</a>.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="shell">
+    <p class="k">Contact</p>
+    <p class="contact">Questions about scope or submissions go to the organizers at <a class="js-mail" href="#"></a>.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <p>UniJudge is a full-day workshop at ACM TRUST 2027, Washington, DC.
+        <span class="mono js-footdate"></span></p>
+      <a class="cta cta-big js-submit" href="#" target="_blank" rel="noopener">Submit a paper</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------------------------------------------------------------------------
+   INTEREST FORM
+   Paste your form link into FORM_URL. Until then, the buttons open an email
+   to the primary contact instead.
+   --------------------------------------------------------------------------- */
+var FORM_URL = '';
+var EMAIL = 'clintsolomon@gmail.com';
+var CONTACT = 'mailto:' + EMAIL + '?subject=UniJudge%20%40%20ACM%20TRUST%202027';
+
+/* ---------------------------------------------------------------------------
+   SUBMISSION PORTAL
+   Paste the workshop's CMT (or OpenReview) link once the Workshop Chairs
+   set it up. Until then the buttons scroll to the call and say it opens soon.
+   --------------------------------------------------------------------------- */
+var SUBMIT_URL = '';
+
+/* ---------------------------------------------------------------------------
+   PAGE LIMITS + DATES  (edit here; the hero strip, date table and footer
+   all read from this). `key` rows are highlighted and shown in the hero.
+   --------------------------------------------------------------------------- */
+var LEN_FULL  = 'Up to 9 pages';
+var LEN_SHORT = 'Up to 4 pages';
+var WORKSHOP_DAY = 'Date within March 7\u20139, 2027 to be announced';
+var DATES = [
+  {when:'November 13, 2026', what:'Call for papers opens'},
+  {when:'December 19, 2026', what:'Paper submission deadline', key:true, hero:'Submissions due'},
+  {when:'January 22, 2027',  what:'Notification of acceptance', key:true, hero:'Notification'},
+  {when:'February 5, 2027',  what:'Final program and materials online'},
+  {when:'March 7\u20139, 2027', what:'UniJudge at ACM TRUST 2027', note:'Washington, DC \u00b7 hybrid', key:true, hero:'Workshop'}
+];
+
+var PC = [
+  {name:'Rachel Zheng', aff:'Apple'},
+  {name:'Niranjan Uma Naresh', aff:'Amazon'},
+  {name:'Praneet Bala', aff:'University of Minnesota'}
+];
+
+/* ---------------------------------------------------------------------------
+   ORGANIZER PHOTOS
+   Paste a data: URI into `photo` and the portrait replaces the initials.
+   Put photos in an images/ folder and use e.g. 'images/clint.jpg'.
+   --------------------------------------------------------------------------- */
+var ORGANIZERS = [
+  {name:'Clint Solomon Mathialagan', aff:'Oracle', role:'Primary contact', photo:''},
+  {name:'Prerana Rane', aff:'Researcher', photo:''},
+  {name:'Alla Rozovskaya', aff:'Queens College, CUNY', photo:''},
+  {name:'Md Nasir', aff:'Oracle', photo:''},
+  {name:'Latha Pemula', aff:'Researcher', photo:''},
+  {name:'Ramprasaath R. Selvaraju', aff:'Apple', photo:''}
+];
+
+(function(){
+  var links = document.querySelectorAll('.js-interest');
+  for(var i = 0; i < links.length; i++){
+    if(FORM_URL){ links[i].href = FORM_URL; }
+    else { links[i].href = CONTACT; links[i].removeAttribute('target'); }
+  }
+  var subs = document.querySelectorAll('.js-submit');
+  for(var s = 0; s < subs.length; s++){
+    if(SUBMIT_URL){ subs[s].href = SUBMIT_URL; subs[s].target = '_blank'; subs[s].rel = 'noopener'; }
+    else { subs[s].href = '#call'; subs[s].removeAttribute('target'); }
+  }
+  var deadline = DATES.filter(function(d){ return d.hero === 'Submissions due'; })[0];
+  var sn = document.querySelector('.js-submit-note');
+  if(sn){ sn.textContent = SUBMIT_URL ? ('Deadline ' + (deadline ? deadline.when : '') + ', AoE.') : 'The submission portal opens with the call for papers.'; }
+  var mails = document.querySelectorAll('.js-mail');
+  for(var m = 0; m < mails.length; m++){ mails[m].href = CONTACT; mails[m].textContent = EMAIL; }
+  var lf = document.querySelector('.js-len-full'); if(lf) lf.textContent = LEN_FULL;
+  var ls = document.querySelector('.js-len-short'); if(ls) ls.textContent = LEN_SHORT;
+  var fd = document.querySelector('.js-footdate'); if(fd) fd.textContent = WORKSHOP_DAY + '.';
+
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function initials(n){
+    var w = n.replace(/\./g,'').split(/\s+/);
+    return (w[0][0] + w[w.length-1][0]).toUpperCase();
+  }
+  var html = '';
+  ORGANIZERS.forEach(function(p){
+    html += '<div class="org">'
+         +   '<span class="ava" data-initials="' + initials(p.name) + '">' + (p.photo ? '<img src="' + esc(p.photo) + '" alt="">' : '') + '</span>'
+         +   '<span class="who"><b>' + esc(p.name) + '</b><span class="aff">' + esc(p.aff) + '</span>'
+         +   (p.role ? '<span class="role">' + esc(p.role) + '</span>' : '')
+         +   '</span></div>';
+  });
+  document.getElementById('orgs').innerHTML = html;
+
+  var dl = '', kd = '';
+  DATES.forEach(function(d){
+    dl += '<div class="drow' + (d.key ? ' key' : '') + '"><span class="when">' + esc(d.when) + '</span>'
+        + '<span class="what">' + esc(d.what) + (d.note ? '<small>' + esc(d.note) + '</small>' : '') + '</span></div>';
+    if(d.hero){ kd += '<span><b>' + esc(d.when) + '</b>' + esc(d.hero) + '</span>'; }
+  });
+  document.getElementById('datelist').innerHTML = dl;
+  document.getElementById('keydates').innerHTML = kd;
+
+  document.getElementById('pc').innerHTML = PC.map(function(p){
+    return '<span class="chip">' + esc(p.name) + ' <span>' + esc(p.aff) + '</span></span>';
+  }).join('');
+})();
+
+/* Cross-representation drift: illustrative judge scores for one fixed answer. */
+(function(){
+  var cv = document.getElementById('cv');
+  var ctx = cv.getContext('2d');
+  var PTS = [
+    {full:'English text',   short:'EN',  v:8.0},
+    {full:'Swahili',        short:'SW',  v:6.6},
+    {full:'Code-switched',  short:'CS',  v:5.9},
+    {full:'Transliterated', short:'TL',  v:6.3},
+    {full:'Image of text',  short:'IMG', v:7.1},
+    {full:'Speech',         short:'SPK', v:5.4},
+    {full:'Reformatted',    short:'FMT', v:8.6},
+    {full:'Verbose',        short:'VRB', v:9.1}
+  ];
+  var REF = 8.0, YMIN = 4, YMAX = 10;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W = 0, H = 216, dpr = 1, LEFT = 40, RIGHT = 14, TOP = 26, BOT = 34, narrow = false;
+  var C = {};
+
+  function readColors(){
+    var cs = getComputedStyle(document.documentElement);
+    function g(n){ return cs.getPropertyValue(n).trim(); }
+    C = { a:g('--a'), warn:g('--warn'), ink:g('--ink'), ink2:g('--ink-2'), ink3:g('--ink-3'), line:g('--line'), paper:g('--paper') };
+  }
+  function size(){
+    narrow = window.innerWidth < 640;
+    LEFT = narrow ? 30 : 40;
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = cv.clientWidth; H = cv.clientHeight || 216;
+    cv.width = Math.round(W*dpr); cv.height = Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  function X(i){ var span = W - LEFT - RIGHT; return LEFT + span*(i + 0.5)/PTS.length; }
+  function Y(v){ return TOP + (1 - (v - YMIN)/(YMAX - YMIN)) * (H - TOP - BOT); }
+
+  function draw(play){
+    ctx.clearRect(0,0,W,H);
+    ctx.font = '400 10px "IBM Plex Mono", monospace';
+    ctx.textBaseline = 'middle';
+    // grid
+    for(var g = YMIN; g <= YMAX; g += 2){
+      var y = Y(g);
+      ctx.strokeStyle = C.line; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(LEFT, Math.round(y)+.5); ctx.lineTo(W-RIGHT, Math.round(y)+.5); ctx.stroke();
+      ctx.fillStyle = C.ink3; ctx.fillText(String(g), 2, y);
+    }
+    // intended verdict
+    ctx.strokeStyle = C.ink3; ctx.lineWidth = 1.6; ctx.setLineDash([5,5]);
+    ctx.beginPath(); ctx.moveTo(LEFT, Y(REF)); ctx.lineTo(W-RIGHT, Y(REF)); ctx.stroke();
+    ctx.setLineDash([]);
+
+    var shown = Math.min(PTS.length, Math.floor(play) + 1);
+    var frac = play - Math.floor(play);
+    // judge polyline
+    ctx.strokeStyle = C.a; ctx.globalAlpha = .45; ctx.lineWidth = 1.4;
+    ctx.beginPath();
+    for(var i = 0; i < shown; i++){ var px = X(i), py = Y(PTS[i].v); if(i === 0) ctx.moveTo(px,py); else ctx.lineTo(px,py); }
+    ctx.stroke(); ctx.globalAlpha = 1;
+
+    for(var k = 0; k < PTS.length; k++){
+      var x = X(k);
+      // x labels
+      ctx.fillStyle = k < shown ? C.ink2 : C.ink3;
+      ctx.font = '400 10px "IBM Plex Mono", monospace';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+      ctx.fillText(narrow ? PTS[k].short : PTS[k].full, x, H - 8);
+      ctx.textAlign = 'left';
+      if(k >= shown) continue;
+      var grow = (k === shown - 1 && play < PTS.length) ? Math.min(1, frac*2.2) : 1;
+      var v = REF + (PTS[k].v - REF) * grow;
+      // drift bar
+      if(Math.abs(PTS[k].v - REF) > 0.05){
+        ctx.fillStyle = C.warn; ctx.globalAlpha = .28;
+        var y0 = Y(REF), y1 = Y(v);
+        ctx.fillRect(x-4, Math.min(y0,y1), 8, Math.abs(y1-y0));
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = C.warn; ctx.fillRect(x-4, y1-1, 8, 2);
+      }
+      // dot
+      ctx.beginPath(); ctx.arc(x, Y(v), 4.6, 0, Math.PI*2);
+      ctx.fillStyle = C.paper; ctx.fill();
+      ctx.lineWidth = 2.2; ctx.strokeStyle = C.a; ctx.stroke();
+      // delta label on the active point
+      if(k === shown - 1 && grow >= 1 && k > 0){
+        var d = PTS[k].v - REF;
+        var lab = (d > 0 ? '+' : '\u2212') + Math.abs(d).toFixed(1);
+        ctx.font = '500 11px "IBM Plex Mono", monospace';
+        ctx.fillStyle = C.warn; ctx.textBaseline = 'middle';
+        var lw = ctx.measureText(lab).width;
+        var lx = Math.min(x + 9, W - RIGHT - lw);
+        var ly = d < 0 ? Y(PTS[k].v) + 12 : Y(PTS[k].v) - 12;
+        ctx.fillText(lab, lx, ly);
+      }
+    }
+  }
+
+  var t0 = null, HOLD = 2.4, RATE = 1.15;
+  function frame(ts){
+    if(t0 === null) t0 = ts;
+    var t = ((ts - t0)/1000 * RATE) % (PTS.length + HOLD);
+    draw(Math.min(t, PTS.length));
+    requestAnimationFrame(frame);
+  }
+  function redrawStatic(){ readColors(); size(); if(reduce) draw(PTS.length); }
+  var booted = false;
+  function boot(){
+    if(booted) return; booted = true;
+    readColors(); size();
+    if(reduce) draw(PTS.length); else requestAnimationFrame(frame);
+  }
+  window.addEventListener('resize', redrawStatic);
+  try{ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', redrawStatic); }catch(e){}
+  try{ new MutationObserver(redrawStatic).observe(document.documentElement, {attributes:true, attributeFilter:['data-theme']}); }catch(e){}
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(boot); }
+  setTimeout(boot, 400);
+})();
+</script>
+</body>
+</html>
