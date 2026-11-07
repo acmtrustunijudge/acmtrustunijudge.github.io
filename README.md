@@ -13,6 +13,6 @@ Everything is in `index.html`. The settings most likely to change are in the
 - `SUBMIT_URL`: the CMT/OpenReview submission link (buttons point to the call until it is set)
 - `FORM_URL`: the reviewer-volunteer form (falls back to emailing the primary contact)
 - `DATES`, `LEN_FULL`, `LEN_SHORT`, `WORKSHOP_DAY`: dates and page limits
-- `ORGANIZERS`, `PC`: organizer cards (add `photo: 'images/name.jpg'`) and program committee
+- `ORGANIZERS`: organizer cards (add `photo: 'images/name.jpg'`)
 
 `UniJudge_TRUST2027_CFP.pdf` is the one-page CFP linked from the call section.

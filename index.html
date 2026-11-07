@@ -332,7 +332,7 @@
   <div class="shell">
     <div class="hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow">Accepted workshop &middot; Washington, DC &middot; March 7&ndash;9, 2027</p>
+        <p class="eyebrow">Washington, DC &middot; March 7&ndash;9, 2027</p>
         <h1>Universal Judges <em>at ACM TRUST 2027</em></h1>
         <p class="sub">Reliable judging across languages and modalities</p>
       </div>
@@ -511,8 +511,7 @@
 <section id="committee">
   <div class="shell">
     <p class="k">Program committee</p>
-    <div class="pc" id="pc"></div>
-    <p class="pc-more">More members to be announced. Researchers working on low-resource, multilingual or multimodal evaluation who would like to review can <a class="js-interest" href="#" target="_blank" rel="noopener" style="color:var(--a-deep)">volunteer here</a>.</p>
+    <p class="pc-more">Researchers working on low-resource, multilingual or multimodal evaluation who would like to review can <a class="js-interest" href="#" target="_blank" rel="noopener" style="color:var(--a-deep)">volunteer here</a>.</p>
   </div>
 </section>
 
@@ -563,12 +562,6 @@ var DATES = [
   {when:'January 22, 2027',  what:'Notification of acceptance', key:true, hero:'Notification'},
   {when:'February 5, 2027',  what:'Final program and materials online'},
   {when:'March 7\u20139, 2027', what:'UniJudge at ACM TRUST 2027', note:'Washington, DC \u00b7 hybrid', key:true, hero:'Workshop'}
-];
-
-var PC = [
-  {name:'Rachel Zheng', aff:'Apple'},
-  {name:'Niranjan Uma Naresh', aff:'Amazon'},
-  {name:'Praneet Bala', aff:'University of Minnesota'}
 ];
 
 /* ---------------------------------------------------------------------------
@@ -629,9 +622,6 @@ var ORGANIZERS = [
   document.getElementById('datelist').innerHTML = dl;
   document.getElementById('keydates').innerHTML = kd;
 
-  document.getElementById('pc').innerHTML = PC.map(function(p){
-    return '<span class="chip">' + esc(p.name) + ' <span>' + esc(p.aff) + '</span></span>';
-  }).join('');
 })();
 
 /* Cross-representation drift: illustrative judge scores for one fixed answer. */
