@@ -16,4 +16,4 @@ Everything is in `index.html`. The settings most likely to change are in the
 - `DATES`, `LEN_FULL`, `LEN_SHORT`, `WORKSHOP_DAY`: dates and page limits
 - `ORGANIZERS`: organizer cards (add `photo: 'images/name.jpg'`)
 
-`UniJudge_TRUST2027_CFP.pdf` is the one-page CFP linked from the call section.
+`UniJudge_TRUST2027_CFP.pdf` is the one-page CFP flyer.
