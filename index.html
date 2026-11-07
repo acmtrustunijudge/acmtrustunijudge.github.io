@@ -480,16 +480,21 @@
       <div class="track"><h3>Junior Spotlight Track</h3><p class="len">Either length</p><p>Dedicated oral slots for students and early-career researchers, with optional pre-workshop feedback from senior researchers. Indicate eligibility when you submit.</p></div>
     </div>
     <div class="rules">
-      <div class="rule"><h3>Format</h3><p>PDF in the 2-column <a href="https://www.acm.org/publications/proceedings-template" target="_blank" rel="noopener">ACM sigconf template</a>, following the <a href="https://eigtrust.acm.org/trust2027/authors-guidelines/" target="_blank" rel="noopener">TRUST 2027 author guidelines</a>. References and the GenAI Usage Disclosure section do not count toward the page limit.</p></div>
-      <div class="rule"><h3>Review</h3><p>Double-blind. Remove names, affiliations and identifying acknowledgments, and write self-references in the third person. Each submission receives at least two independent reviews from reviewers matched by expertise; organizers recuse themselves from conflicted submissions.</p></div>
+      <div class="rule"><h3>Submission routes</h3><p>We use a hybrid submission model, accepting both <a href="https://openreview.net/group?id=ACM.org/TRUST/2027/Workshop/UniJudge" target="_blank" rel="noopener">direct submissions via OpenReview</a> and <a class="js-arr-commit" href="https://openreview.net/group?id=ACM.org/TRUST/2027/Workshop/UniJudge_ARR_Commitment" target="_blank" rel="noopener">ACL Rolling Review (ARR) commitments</a>. ARR papers already accepted at a *CL venue must be submitted as non-archival.</p></div>
+      <div class="rule"><h3>Format</h3><p>Direct submissions must be PDFs in the 2-column <a href="https://www.acm.org/publications/proceedings-template" target="_blank" rel="noopener">ACM sigconf template</a>, following the <a href="https://eigtrust.acm.org/trust2027/authors-guidelines/" target="_blank" rel="noopener">TRUST 2027 author guidelines</a>. References and the GenAI Usage Disclosure section do not count toward the page limit.</p></div>
+      <div class="rule"><h3>Review</h3><p>Direct submissions are double-blind. Remove names, affiliations and identifying acknowledgments, and write self-references in the third person. Each direct submission receives at least two independent reviews from reviewers matched by expertise; organizers recuse themselves from conflicted submissions.</p></div>
       <div class="rule"><h3>Presentation</h3><p>At least one author of each accepted paper must register for ACM TRUST 2027 and present the work. The conference is hybrid, and remote presentation follows the conference&rsquo;s virtual participation policies.</p></div>
-      <div class="rule"><h3>Open access</h3><p>ACM publications are fully open access. Papers in the proceedings are covered by ACM Open if the corresponding author&rsquo;s institution participates; otherwise an article processing charge applies. See the <a href="https://eigtrust.acm.org/trust2027/authors-guidelines/#open-access-apcs" target="_blank" rel="noopener">APC details</a>.</p></div>
+      <div class="rule"><h3>Archival publication</h3><p>Details of archival publication options, including any fees or available waivers, will be announced once confirmed.</p></div>
     </div>
-    <p class="stmt">Accepted workshop papers will be considered for publication in the TRUST 2027 conference proceedings. Papers selected for inclusion in the proceedings may undergo an additional light review to determine their suitability for publication.</p>
+    <p class="stmt">Authors of accepted workshop papers may choose either the archival or non-archival option, except that ARR papers already accepted at a *CL venue must be non-archival.</p>
     <div class="submitrow">
-      <a class="cta cta-big js-submit" href="#" target="_blank" rel="noopener">Submit a paper</a>
+      <a class="cta cta-big js-submit" href="#" target="_blank" rel="noopener">Submit directly</a>
       <span class="note js-submit-note"></span>
       <a class="ghost" href="UniJudge_TRUST2027_CFP.pdf" download>Download the CFP (PDF)</a>
+    </div>
+    <div class="submitrow">
+      <a class="cta cta-big js-arr-commit" href="https://openreview.net/group?id=ACM.org/TRUST/2027/Workshop/UniJudge_ARR_Commitment" target="_blank" rel="noopener">Commit an ARR paper</a>
+      <span class="note js-arr-commit-note"></span>
     </div>
   </div>
 </section>
@@ -544,11 +549,11 @@ var EMAIL = 'acmtrustunijudge@gmail.com';
 var CONTACT = 'mailto:' + EMAIL + '?subject=UniJudge%20%40%20ACM%20TRUST%202027';
 
 /* ---------------------------------------------------------------------------
-   SUBMISSION PORTAL
-   Paste the workshop's CMT (or OpenReview) link once the Workshop Chairs
-   set it up. Until then the buttons scroll to the call and say it opens soon.
+   SUBMISSION PORTALS
+   Separate OpenReview pages for direct submissions and ARR commitments.
    --------------------------------------------------------------------------- */
-var SUBMIT_URL = '';
+var SUBMIT_URL = 'https://openreview.net/group?id=ACM.org/TRUST/2027/Workshop/UniJudge';
+var ARR_COMMIT_URL = 'https://openreview.net/group?id=ACM.org/TRUST/2027/Workshop/UniJudge_ARR_Commitment';
 
 /* ---------------------------------------------------------------------------
    PAGE LIMITS + DATES  (edit here; the hero strip, date table and footer
@@ -558,10 +563,10 @@ var LEN_FULL  = 'Up to 9 pages';
 var LEN_SHORT = 'Up to 4 pages';
 var WORKSHOP_DAY = 'Date within March 7\u20139, 2027 to be announced';
 var DATES = [
-  {when:'November 13, 2026', what:'Call for papers opens'},
-  {when:'December 19, 2026', what:'Paper submission deadline', key:true, hero:'Submissions due'},
-  {when:'January 22, 2027',  what:'Notification of acceptance', key:true, hero:'Notification'},
-  {when:'February 5, 2027',  what:'Final program and materials online'},
+  {when:'December 11, 2026', what:'Abstract registration (direct)', key:true, hero:'Abstracts due'},
+  {when:'December 18, 2026', what:'Paper submission deadline (direct)', key:true, hero:'Submissions due'},
+  {when:'January 8, 2027', what:'ARR commitment deadline', key:true, hero:'ARR commitments due'},
+  {when:'January 22, 2027',  what:'Acceptance notification', key:true, hero:'Notification'},
   {when:'March 7\u20139, 2027', what:'UniJudge at ACM TRUST 2027', note:'Washington, DC \u00b7 hybrid', key:true, hero:'Workshop'}
 ];
 
@@ -590,9 +595,14 @@ var ORGANIZERS = [
     if(SUBMIT_URL){ subs[s].href = SUBMIT_URL; subs[s].target = '_blank'; subs[s].rel = 'noopener'; }
     else { subs[s].href = '#call'; subs[s].removeAttribute('target'); }
   }
+  var arrLinks = document.querySelectorAll('.js-arr-commit');
+  for(var a = 0; a < arrLinks.length; a++){ arrLinks[a].href = ARR_COMMIT_URL; }
   var deadline = DATES.filter(function(d){ return d.hero === 'Submissions due'; })[0];
   var sn = document.querySelector('.js-submit-note');
-  if(sn){ sn.textContent = SUBMIT_URL ? ('Deadline ' + (deadline ? deadline.when : '') + ', AoE.') : 'The submission portal opens with the call for papers.'; }
+  if(sn){ sn.textContent = SUBMIT_URL ? ('Direct submission deadline: ' + (deadline ? deadline.when : '') + ', 11:59 PM AoE.') : 'Direct submission details will be announced.'; }
+  var arrDeadline = DATES.filter(function(d){ return d.hero === 'ARR commitments due'; })[0];
+  var arrNote = document.querySelector('.js-arr-commit-note');
+  if(arrNote && arrDeadline){ arrNote.textContent = 'ARR commitment deadline: ' + arrDeadline.when + ', 11:59 PM AoE.'; }
   var mails = document.querySelectorAll('.js-mail');
   for(var m = 0; m < mails.length; m++){ mails[m].href = CONTACT; mails[m].textContent = EMAIL; }
   var lf = document.querySelector('.js-len-full'); if(lf) lf.textContent = LEN_FULL;

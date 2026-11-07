@@ -10,7 +10,8 @@ Live site: https://acmtrustunijudge.github.io/
 Everything is in `index.html`. The settings most likely to change are in the
 `<script>` block near the bottom:
 
-- `SUBMIT_URL`: the CMT/OpenReview submission link (buttons point to the call until it is set)
+- `SUBMIT_URL`: the direct submission link on OpenReview
+- `ARR_COMMIT_URL`: the ARR commitment link on OpenReview
 - `FORM_URL`: the reviewer-volunteer form (falls back to emailing the primary contact)
 - `DATES`, `LEN_FULL`, `LEN_SHORT`, `WORKSHOP_DAY`: dates and page limits
 - `ORGANIZERS`: organizer cards (add `photo: 'images/name.jpg'`)
