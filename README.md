@@ -17,3 +17,15 @@ Everything is in `index.html`. The settings most likely to change are in the
 - `ORGANIZERS`: organizer cards (add `photo: 'images/name.jpg'`)
 
 `UniJudge_TRUST2027_CFP.pdf` is the one-page CFP flyer.
+
+To rebuild it, install `reportlab` and `qrcode`, then run
+`python scripts/build_cfp.py`. The script reads deadlines, submission links,
+organizers, and the contact address from `index.html`; flyer copy and topic
+summaries are maintained in the script. It uses Lato fonts from
+`/usr/share/fonts/truetype/lato` (override with `--font-dir`).
+The default theme is muted navy; `--theme slate` provides a subtle alternative.
+Use `--output /path/to/flyer.pdf` to save a separate copy.
+
+For the condensed 1200 x 1200 LinkedIn PNG, install `Pillow` and `qrcode`,
+then run `python scripts/build_linkedin.py`. This also reads dates from
+`index.html` and uses the same Lato font directory.
