@@ -12,7 +12,7 @@ Everything is in `index.html`. The settings most likely to change are in the
 
 - `SUBMIT_URL`: the direct submission link on OpenReview
 - `ARR_COMMIT_URL`: the ARR commitment link on OpenReview
-- `FORM_URL`: the reviewer-volunteer form (falls back to emailing the primary contact)
+- `EMAIL`: the organizer contact address, also used for reviewer interest
 - `DATES`, `LEN_FULL`, `LEN_SHORT`, `WORKSHOP_DAY`: dates and page limits
 - `ORGANIZERS`: organizer cards (add `photo: 'images/name.jpg'`)
 

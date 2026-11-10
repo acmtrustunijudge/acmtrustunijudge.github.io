@@ -38,55 +38,6 @@
     --glow-a:rgba(59,72,214,.10);
     --glow-b:rgba(11,143,130,.11);
   }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      color-scheme: dark;
-      --ground:#0f131c;
-      --paper:#161b27;
-      --ink:#eef1f7;
-      --ink-2:#b4bccc;
-      --ink-3:#808a9e;
-      --line:#262d3d;
-      --line-2:#343c50;
-      --a:#8790ff;
-      --a-deep:#aab1ff;
-      --b:#3fcbb8;
-      --b-deep:#6fdccd;
-      --warn:#f0a43c;
-      --wash-a:#1d2240;
-      --wash-b:#132c2b;
-      --bar:rgba(15,19,28,.84);
-      --shadow:0 1px 2px rgba(0,0,0,.3);
-      --shadow-2:0 6px 20px rgba(0,0,0,.35);
-      --glow-a:rgba(135,144,255,.12);
-      --glow-b:rgba(63,203,184,.10);
-    }
-  }
-  :root[data-theme="dark"]{
-    color-scheme: dark;
-    --ground:#0f131c;
-    --paper:#161b27;
-    --ink:#eef1f7;
-    --ink-2:#b4bccc;
-    --ink-3:#808a9e;
-    --line:#262d3d;
-    --line-2:#343c50;
-    --a:#8790ff;
-    --a-deep:#aab1ff;
-    --b:#3fcbb8;
-    --b-deep:#6fdccd;
-    --warn:#f0a43c;
-    --wash-a:#1d2240;
-    --wash-b:#132c2b;
-    --bar:rgba(15,19,28,.84);
-    --shadow:0 1px 2px rgba(0,0,0,.3);
-    --shadow-2:0 6px 20px rgba(0,0,0,.35);
-    --glow-a:rgba(135,144,255,.12);
-    --glow-b:rgba(63,203,184,.10);
-  }
-
-  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .art{opacity:1;filter:brightness(1.5) saturate(1.1);} }
-  :root[data-theme="dark"] .art{opacity:1;filter:brightness(1.5) saturate(1.1);}
   :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);}
   html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);background:var(--ground);}
   *,*::before,*::after{box-sizing:border-box;}
@@ -111,11 +62,11 @@
   .cta{
     display:inline-block;text-decoration:none;
     font-family:"Bricolage Grotesque","IBM Plex Sans",sans-serif;font-size:15.5px;font-weight:700;letter-spacing:-.008em;line-height:1.15;
-    color:#ffffff;background:linear-gradient(96deg,#3b48d6,#0b8f82);
-    padding:12px 24px;border-radius:999px;white-space:nowrap;box-shadow:0 2px 10px rgba(30,80,170,.22);
-    transition:filter .16s ease, transform .08s ease;
+    color:#ffffff;background:#243247;
+    padding:12px 24px;border-radius:999px;white-space:nowrap;box-shadow:0 2px 6px rgba(18,24,38,.12);
+    transition:background-color .16s ease, transform .08s ease;
   }
-  .cta:hover{filter:brightness(1.08);}
+  .cta:hover{background:#354761;}
   .cta:active{transform:translateY(1px);}
   .cta:focus-visible{outline:2px solid var(--b);outline-offset:3px;}
   .cta.cta-big{font-size:18px;padding:15px 32px;}
@@ -151,11 +102,7 @@
 
   /* sections */
   section{padding:78px 0 0;}
-  .k{font-size:11.5px;letter-spacing:.19em;text-transform:uppercase;color:var(--b-deep);font-weight:600;margin:0 0 26px;}
-  .why{max-width:66ch;}
-  .why p{margin:0 0 16px;color:var(--ink-2);}
-  .why p:last-child{margin-bottom:0;}
-  .why b{color:var(--ink);font-weight:600;}
+  .k{font-family:"Bricolage Grotesque","IBM Plex Sans",system-ui,sans-serif;font-size:clamp(22px,3vw,28px);line-height:1.25;letter-spacing:.04em;text-transform:uppercase;color:var(--b-deep);font-weight:700;margin:0 0 26px;}
 
   /* topics */
   .themes{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
@@ -245,7 +192,7 @@
 
   /* cfp detail */
   .cfp-intro{max-width:66ch;margin:0 0 22px;color:var(--ink-2);}
-  .tracks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .tracks{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
   .track{border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--paper);box-shadow:var(--shadow);}
   .track h3{font-size:17px;letter-spacing:-.014em;margin-bottom:4px;}
   .track .len{font-size:13.5px;color:var(--b-deep);font-weight:600;margin:0 0 8px;}
@@ -253,6 +200,7 @@
   .rules{margin:26px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:12px 40px;}
   .rule h3{font-size:16px;letter-spacing:-.012em;margin-bottom:4px;}
   .rule p{margin:0;font-size:14.5px;color:var(--ink-2);line-height:1.55;}
+  .reciprocal{margin-top:26px;}
   .rule a, .stmt a, .contact a{color:var(--a-deep);}
   .stmt{margin:28px 0 0;padding:18px 22px;border-left:3px solid var(--b);background:var(--wash-b);border-radius:0 10px 10px 0;font-size:15px;color:var(--ink);max-width:78ch;}
   .submitrow{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:28px 0 0;}
@@ -323,6 +271,7 @@
       <a href="#dates">Dates</a>
       <a href="#program">Program</a>
       <a href="#organizers">Organizers</a>
+      <a href="#committee">Reviewing</a>
     </nav>
     <a class="cta js-submit" href="#call">Submit a paper</a>
   </div>
@@ -385,7 +334,7 @@
     <p class="stand">UniJudge is a full-day workshop at ACM TRUST 2027 asking whether AI judges stay reliable as the systems they evaluate move across languages, modalities and representations &mdash; spanning multilingual and low-resource judges, multimodal judges, their intersection, and cross-representation consistency.</p>
     <div class="heroact">
       <a class="cta cta-big" href="#call">Read the call for papers</a>
-      <a class="ghost js-interest" href="#" target="_blank" rel="noopener">Volunteer to review</a>
+      <a class="ghost" href="#committee">Volunteer to review</a>
     </div>
     <div class="keydates" id="keydates"></div>
 
@@ -404,17 +353,6 @@
     </div>
   </div>
 </div>
-
-<section>
-  <div class="shell">
-    <p class="k">Motivation</p>
-    <div class="why">
-      <p>AI judges are becoming a general-purpose evaluation layer: they benchmark models, select checkpoints, gate safety evaluations and inform deployment decisions. Yet most judge methods and benchmarks remain concentrated in <b>English and text-only</b> settings.</p>
-      <p>As AI systems expand across languages and modalities, it is unclear whether judge reliability transfers with them. A judge that performs well on English text may behave differently in another language, fail to use the perceptual evidence it needs, or reward presentation rather than underlying quality.</p>
-      <p>These failure modes are studied separately across trustworthy AI, multilingual NLP, vision, speech and multimodal learning. <b>UniJudge</b> brings those communities together to treat the evaluator itself as an object of auditing and assurance &mdash; comparing failure modes, sharing evaluation protocols and building a common research agenda.</p>
-    </div>
-  </div>
-</section>
 
 <section>
   <div class="shell">
@@ -473,20 +411,21 @@
 <section id="call">
   <div class="shell">
     <p class="k">Call for papers</p>
-    <p class="cfp-intro">We invite submissions on the reliability of AI judges in multilingual or multimodal settings, and on broader questions &mdash; reasoning validity, robustness, calibration, bias, causal faithfulness, judge disagreement, multi-judge systems &mdash; with clear implications for these settings. Negative results, replications, preliminary findings and works in progress are explicitly welcome.</p>
+    <p class="cfp-intro">AI judges increasingly shape model development, safety evaluations and deployment decisions. Their judgments need to remain reliable across languages, modalities and representations, yet changes in language, perceptual evidence or presentation can alter a verdict without changing the underlying quality. UniJudge brings together researchers in trustworthy AI, multilingual NLP, vision, speech and multimodal learning to audit these evaluators, compare failure modes and develop shared evaluation protocols.</p>
+    <p class="cfp-intro">We invite submissions on the reliability of AI judges in multilingual or multimodal settings, including methods, analyses, benchmarks and datasets. We also welcome work on reasoning validity, robustness, calibration, bias, causal faithfulness, judge disagreement and multi-judge systems with clear implications for these settings. Negative results, replications, position papers, preliminary findings and works in progress are explicitly welcome.</p>
     <div class="tracks">
-      <div class="track"><h3>Full papers</h3><p class="len js-len-full"></p><p>Completed research: new methods, analyses, benchmarks, datasets or evaluation protocols for auditing and meta-evaluating judges.</p></div>
-      <div class="track"><h3>Short papers and extended abstracts</h3><p class="len js-len-short"></p><p>Position papers, negative results, replications, preliminary findings and works in progress.</p></div>
-      <div class="track"><h3>Junior Spotlight Track</h3><p class="len">Either length</p><p>Dedicated oral slots for students and early-career researchers, with optional pre-workshop feedback from senior researchers. Indicate eligibility when you submit.</p></div>
+      <div class="track"><h3>Long papers</h3><p class="len js-len-full"></p><p>Completed research: new methods, analyses, benchmarks, datasets or evaluation protocols for auditing and meta-evaluating judges.</p></div>
+      <div class="track"><h3>Short papers</h3><p class="len js-len-short"></p><p>Position papers, negative results, replications, preliminary findings and works in progress.</p></div>
     </div>
     <div class="rules">
-      <div class="rule"><h3>Submission routes</h3><p>We use a hybrid submission model, accepting both <a href="https://openreview.net/group?id=ACM.org/TRUST/2027/Workshop/UniJudge" target="_blank" rel="noopener">direct submissions via OpenReview</a> and <a class="js-arr-commit" href="https://openreview.net/group?id=ACM.org/TRUST/2027/Workshop/UniJudge_ARR_Commitment" target="_blank" rel="noopener">ACL Rolling Review (ARR) commitments</a>. ARR papers already accepted at a *CL venue must be submitted as non-archival.</p></div>
+      <div class="rule"><h3>Submission routes</h3><p>We use a hybrid submission model, accepting both <a href="https://openreview.net/group?id=ACM.org/TRUST/2027/Workshop/UniJudge" target="_blank" rel="noopener">direct submissions via OpenReview</a> and <a class="js-arr-commit" href="https://openreview.net/group?id=ACM.org/TRUST/2027/Workshop/UniJudge_ARR_Commitment" target="_blank" rel="noopener">ACL Rolling Review (ARR) commitments</a>. Previously published or accepted papers are eligible only for non-archival presentation.</p></div>
       <div class="rule"><h3>Format</h3><p>Direct submissions must be PDFs in the 2-column <a href="https://www.acm.org/publications/proceedings-template" target="_blank" rel="noopener">ACM sigconf template</a>, following the <a href="https://eigtrust.acm.org/trust2027/authors-guidelines/" target="_blank" rel="noopener">TRUST 2027 author guidelines</a>. References and the GenAI Usage Disclosure section do not count toward the page limit.</p></div>
       <div class="rule"><h3>Review</h3><p>Direct submissions are double-blind. Remove names, affiliations and identifying acknowledgments, and write self-references in the third person. Each direct submission receives at least two independent reviews from reviewers matched by expertise; organizers recuse themselves from conflicted submissions.</p></div>
       <div class="rule"><h3>Presentation</h3><p>At least one author of each accepted paper must register for ACM TRUST 2027 and present the work. The conference is hybrid, and remote presentation follows the conference&rsquo;s virtual participation policies.</p></div>
       <div class="rule"><h3>Archival publication</h3><p>Details of archival publication options, including any fees or available waivers, will be announced once confirmed.</p></div>
+      <div class="rule"><h3>Student Spotlight</h3><p>Accepted long and short papers whose first author is a student at the submission deadline may be considered for dedicated spotlight presentation slots. Indicate eligibility and interest when submitting.</p></div>
     </div>
-    <p class="stmt">Authors of accepted workshop papers may choose either the archival or non-archival option, except that ARR papers already accepted at a *CL venue must be non-archival.</p>
+    <p class="stmt">Both archival and non-archival submissions are welcome. Previously published or accepted papers are eligible only for non-archival presentation.</p>
     <div class="submitrow">
       <a class="cta cta-big js-submit" href="#" target="_blank" rel="noopener">Submit directly</a>
       <span class="note js-submit-note"></span>
@@ -495,6 +434,7 @@
       <a class="cta cta-big js-arr-commit" href="https://openreview.net/group?id=ACM.org/TRUST/2027/Workshop/UniJudge_ARR_Commitment" target="_blank" rel="noopener">Commit an ARR paper</a>
       <span class="note js-arr-commit-note"></span>
     </div>
+    <div class="rule reciprocal"><h3>Reciprocal reviewing</h3><p>Each direct submission must nominate at least one qualified coauthor who agrees to review for the workshop if invited. A qualified reviewer should have coauthored at least one peer-reviewed research publication in a relevant area. If no coauthor meets this criterion, indicate this when submitting to request an exemption. Nominations are subject to organizer approval.</p></div>
   </div>
 </section>
 
@@ -515,8 +455,8 @@
 
 <section id="committee">
   <div class="shell">
-    <p class="k">Program committee</p>
-    <p class="pc-more">Researchers working on low-resource, multilingual or multimodal evaluation who would like to review can <a class="js-interest" href="#" target="_blank" rel="noopener" style="color:var(--a-deep)">volunteer here</a>.</p>
+    <p class="k">Review for UniJudge</p>
+    <p class="pc-more">Interested in reviewing? <a class="js-interest" href="mailto:acmtrustunijudge@gmail.com" style="color:var(--a-deep)">Email the organizers</a> with your OpenReview profile, relevant publications, and areas of expertise.</p>
   </div>
 </section>
 
@@ -539,11 +479,9 @@
 
 <script>
 /* ---------------------------------------------------------------------------
-   INTEREST FORM
-   Paste your form link into FORM_URL. Until then, the buttons open an email
-   to the primary contact instead.
+   ORGANIZER CONTACT
+   Reviewer interest links open an email to the organizers.
    --------------------------------------------------------------------------- */
-var FORM_URL = '';
 var EMAIL = 'acmtrustunijudge@gmail.com';
 var CONTACT = 'mailto:' + EMAIL + '?subject=UniJudge%20%40%20ACM%20TRUST%202027';
 
@@ -586,8 +524,8 @@ var ORGANIZERS = [
 (function(){
   var links = document.querySelectorAll('.js-interest');
   for(var i = 0; i < links.length; i++){
-    if(FORM_URL){ links[i].href = FORM_URL; }
-    else { links[i].href = CONTACT; links[i].removeAttribute('target'); }
+    links[i].href = CONTACT;
+    links[i].removeAttribute('target');
   }
   var subs = document.querySelectorAll('.js-submit');
   for(var s = 0; s < subs.length; s++){
@@ -745,8 +683,6 @@ var ORGANIZERS = [
     if(reduce) draw(PTS.length); else requestAnimationFrame(frame);
   }
   window.addEventListener('resize', redrawStatic);
-  try{ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', redrawStatic); }catch(e){}
-  try{ new MutationObserver(redrawStatic).observe(document.documentElement, {attributes:true, attributeFilter:['data-theme']}); }catch(e){}
   if(document.fonts && document.fonts.ready){ document.fonts.ready.then(boot); }
   setTimeout(boot, 400);
 })();
