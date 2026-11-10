@@ -72,7 +72,7 @@
   .cta.cta-big{font-size:18px;padding:15px 32px;}
 
   /* hero */
-  .hero{position:relative;padding:66px 0 0;overflow:hidden;}
+  .hero{position:relative;padding:50px 0 0;overflow:hidden;}
   .hero::before{content:"";position:absolute;inset:-40% -20% auto -20%;height:600px;
     background:radial-gradient(46% 52% at 22% 34%, var(--glow-a), transparent 68%),radial-gradient(44% 50% at 76% 26%, var(--glow-b), transparent 70%);pointer-events:none;}
   .hero .shell{position:relative;}
@@ -88,7 +88,7 @@
   .heroact .note{font-size:14px;color:var(--ink-3);}
 
   /* consistency demo */
-  .tl-frame{margin:48px 0 0;position:relative;border:1px solid var(--line);border-radius:14px;background:var(--paper);box-shadow:var(--shadow-2);padding:18px 20px 14px;overflow:hidden;}
+  .tl-frame{margin:30px 0 0;position:relative;border:1px solid var(--line);border-radius:14px;background:var(--paper);box-shadow:var(--shadow-2);padding:18px 20px 14px;overflow:hidden;}
   .tl-cap{display:flex;align-items:baseline;gap:16px;margin-bottom:12px;flex-wrap:nowrap;}
   .tl-cap .t{flex:0 0 auto;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--b-deep);font-weight:600;white-space:nowrap;padding-right:16px;border-right:1px solid var(--line);}
   .tl-cap .d{flex:1 1 auto;font-size:13px;color:var(--ink-2);}
@@ -101,7 +101,7 @@
   .lg .illus{color:var(--ink-3);font-size:12.5px;}
 
   /* sections */
-  section{padding:78px 0 0;}
+  section{padding:50px 0 0;}
   .k{font-family:"Bricolage Grotesque","IBM Plex Sans",system-ui,sans-serif;font-size:clamp(17px,2vw,20px);line-height:1.3;letter-spacing:.04em;text-transform:uppercase;color:var(--b-deep);font-weight:600;margin:0 0 26px;}
 
   /* topics */
@@ -162,7 +162,7 @@
   .org .role{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--b-deep);}
 
   /* footer */
-  footer{margin-top:84px;border-top:1px solid var(--line);background:var(--paper);padding:48px 0 56px;}
+  footer{margin-top:50px;border-top:1px solid var(--line);background:var(--paper);padding:48px 0 56px;}
   .foot{display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap;}
   .foot p{margin:0;color:var(--ink-2);font-size:16px;max-width:46ch;}
   .foot .mono{display:block;margin-top:8px;font-size:12.5px;color:var(--ink-3);letter-spacing:.03em;}
@@ -174,10 +174,6 @@
   .nav a:focus-visible{outline:2px solid var(--b);outline-offset:2px;}
   .ghost{display:inline-block;text-decoration:none;font-weight:600;font-size:15px;color:var(--a-deep);padding:11px 4px;border-bottom:1.5px solid currentColor;line-height:1.1;}
   .ghost:hover{color:var(--b-deep);}
-
-  /* key dates strip in hero */
-  .keydates{display:flex;flex-wrap:wrap;gap:10px 28px;margin:22px 0 0;padding:14px 0 0;border-top:1px solid var(--line);font-size:14.5px;color:var(--ink-2);}
-  .keydates b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:17px;font-weight:700;letter-spacing:-.012em;color:var(--ink);}
 
   /* dates */
   .dates{border:1px solid var(--line);border-radius:14px;background:var(--paper);box-shadow:var(--shadow);overflow:hidden;}
@@ -203,12 +199,14 @@
   .reciprocal{margin-top:26px;}
   .rule a, .stmt a, .contact a{color:var(--a-deep);}
   .stmt{margin:28px 0 0;padding:18px 22px;border-left:3px solid var(--b);background:var(--wash-b);border-radius:0 10px 10px 0;font-size:15px;color:var(--ink);max-width:78ch;}
-  .submitrow{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:28px 0 0;}
+  .submitactions{display:flex;align-items:flex-start;gap:20px;margin:24px 0 0;}
+  .submitrow{display:flex;flex-direction:column;align-items:flex-start;gap:8px;}
   .submitrow .note{font-size:14px;color:var(--ink-3);}
+  .submitrow .note:empty{display:none;}
 
-  /* pc + contact */
+  /* reviewing + contact */
   .pc{display:flex;flex-wrap:wrap;gap:8px;}
-  .pc-more{margin:14px 0 0;font-size:14.5px;color:var(--ink-2);}
+  .pc-more{margin:0 0 12px;font-size:14.5px;color:var(--ink-2);}
   .contact{margin:0;font-size:16px;color:var(--ink-2);max-width:66ch;}
 
   @media (max-width:1000px){ .orgs{grid-template-columns:repeat(2,1fr);} }
@@ -224,13 +222,14 @@
   @media (max-width:760px){ .venue{display:none;} }
   @media (max-width:640px){
     .shell{padding:0 18px;}
-    section{padding-top:54px;}
+    .submitactions{flex-direction:column;gap:16px;}
+    section{padding-top:36px;}
     .k{margin-bottom:20px;}
     .hero{padding-top:44px;}
     .eyebrow{font-size:11px;letter-spacing:.12em;margin-bottom:16px;}
     .stand{font-size:16.5px;margin-top:18px;}
     .heroact{gap:14px;margin-top:24px;}
-    .tl-frame{margin-top:34px;padding:14px 14px 10px;}
+    .tl-frame{margin-top:24px;padding:14px 14px 10px;}
     .tl-cap{gap:8px;margin-bottom:10px;}
     .tl-cap .d{font-size:12.5px;}
     .cvwrap,canvas{height:176px;}
@@ -242,7 +241,7 @@
     .orgs{grid-template-columns:1fr;gap:12px;}
     .row{grid-template-columns:1fr;gap:2px;padding:12px 16px;}
     .sp-card{padding:18px;}
-    footer{margin-top:62px;padding:40px 0 48px;}
+    footer{margin-top:36px;padding:40px 0 48px;}
     .foot p{font-size:15px;}
   }
   @media (max-width:560px){
@@ -336,7 +335,6 @@
       <a class="cta cta-big" href="#call">Read the call for papers</a>
       <a class="ghost" href="#committee">Volunteer to review</a>
     </div>
-    <div class="keydates" id="keydates"></div>
 
     <div class="tl-frame">
       <div class="tl-cap">
@@ -353,6 +351,14 @@
     </div>
   </div>
 </div>
+
+<section id="dates">
+  <div class="shell">
+    <p class="k">Important dates</p>
+    <div class="dates" id="datelist"></div>
+    <p class="tz">All deadlines are 11:59 PM Anywhere on Earth (UTC&minus;12).</p>
+  </div>
+</section>
 
 <section>
   <div class="shell">
@@ -426,23 +432,17 @@
       <div class="rule"><h3>Student Spotlight</h3><p>Accepted long and short papers whose first author is a student at the submission deadline may be considered for dedicated spotlight presentation slots. Indicate eligibility and interest when submitting.</p></div>
     </div>
     <p class="stmt">Both archival and non-archival submissions are welcome. Previously published or accepted papers are eligible only for non-archival presentation.</p>
-    <div class="submitrow">
-      <a class="cta cta-big js-submit" href="#" target="_blank" rel="noopener">Submit directly</a>
-      <span class="note js-submit-note"></span>
-    </div>
-    <div class="submitrow">
-      <a class="cta cta-big js-arr-commit" href="https://openreview.net/group?id=ACM.org/TRUST/2027/Workshop/UniJudge_ARR_Commitment" target="_blank" rel="noopener">Commit an ARR paper</a>
-      <span class="note js-arr-commit-note"></span>
+    <div class="submitactions">
+      <div class="submitrow">
+        <a class="cta cta-big js-submit" href="#" target="_blank" rel="noopener">Submit directly</a>
+        <span class="note js-submit-note"></span>
+      </div>
+      <div class="submitrow">
+        <a class="cta cta-big js-arr-commit" href="https://openreview.net/group?id=ACM.org/TRUST/2027/Workshop/UniJudge_ARR_Commitment" target="_blank" rel="noopener">Commit an ARR paper</a>
+        <span class="note js-arr-commit-note"></span>
+      </div>
     </div>
     <div class="rule reciprocal"><h3>Reciprocal reviewing</h3><p>Each direct submission must nominate at least one qualified coauthor who agrees to review for the workshop if invited. A qualified reviewer should have coauthored at least one peer-reviewed research publication in a relevant area. If no coauthor meets this criterion, indicate this when submitting to request an exemption. Nominations are subject to organizer approval.</p></div>
-  </div>
-</section>
-
-<section id="dates">
-  <div class="shell">
-    <p class="k">Important dates</p>
-    <div class="dates" id="datelist"></div>
-    <p class="tz">All deadlines are 11:59 PM Anywhere on Earth (UTC&minus;12).</p>
   </div>
 </section>
 
@@ -454,16 +454,10 @@
 </section>
 
 <section id="committee">
-  <div class="shell">
-    <p class="k">Review for UniJudge</p>
-    <p class="pc-more">Interested in reviewing? <a class="js-interest" href="mailto:acmtrustunijudge@gmail.com" style="color:var(--a-deep)">Email the organizers</a> with your OpenReview profile, relevant publications, and areas of expertise.</p>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="shell">
-    <p class="k">Contact</p>
-    <p class="contact">Questions about scope or submissions go to the organizers at <a class="js-mail" href="#"></a>.</p>
+  <div class="shell" id="contact">
+    <p class="k">Reviewing &amp; contact</p>
+    <p class="pc-more">To volunteer as a reviewer, send your OpenReview profile, relevant publications, and areas of expertise.</p>
+    <p class="contact"><a class="js-mail" href="mailto:acmtrustunijudge@gmail.com">acmtrustunijudge@gmail.com</a></p>
   </div>
 </section>
 
@@ -480,7 +474,7 @@
 <script>
 /* ---------------------------------------------------------------------------
    ORGANIZER CONTACT
-   Reviewer interest links open an email to the organizers.
+   Contact links open an email to the organizers.
    --------------------------------------------------------------------------- */
 var EMAIL = 'acmtrustunijudge@gmail.com';
 var CONTACT = 'mailto:' + EMAIL + '?subject=UniJudge%20%40%20ACM%20TRUST%202027';
@@ -522,11 +516,6 @@ var ORGANIZERS = [
 ];
 
 (function(){
-  var links = document.querySelectorAll('.js-interest');
-  for(var i = 0; i < links.length; i++){
-    links[i].href = CONTACT;
-    links[i].removeAttribute('target');
-  }
   var subs = document.querySelectorAll('.js-submit');
   for(var s = 0; s < subs.length; s++){
     if(SUBMIT_URL){ subs[s].href = SUBMIT_URL; subs[s].target = '_blank'; subs[s].rel = 'noopener'; }
@@ -561,14 +550,12 @@ var ORGANIZERS = [
   });
   document.getElementById('orgs').innerHTML = html;
 
-  var dl = '', kd = '';
+  var dl = '';
   DATES.forEach(function(d){
     dl += '<div class="drow' + (d.key ? ' key' : '') + '"><span class="when">' + esc(d.when) + '</span>'
         + '<span class="what">' + esc(d.what) + (d.note ? '<small>' + esc(d.note) + '</small>' : '') + '</span></div>';
-    if(d.hero){ kd += '<span><b>' + esc(d.when) + '</b>' + esc(d.hero) + '</span>'; }
   });
   document.getElementById('datelist').innerHTML = dl;
-  document.getElementById('keydates').innerHTML = kd;
 
 })();
 
