@@ -62,14 +62,16 @@ def line(points, color, width=1):
 # Recognizable workshop header, softened to navy and sage.
 box((0,0,1200,266),NAVY)
 box((0,260,1200,266),TEAL)
-text('CALL FOR PAPERS & REVIEWERS  /  ACM TRUST 2027 WORKSHOP',50,37,23,MINT,True)
+header='CALL FOR PAPERS  /  THE FIRST WORKSHOP ON UNIVERSAL JUDGES'
+assert draw.textlength(header,font=font(20,True))<=1100*S
+text(header,50,37,20,MINT,True)
 title='Universal Judges (UniJudge)'
 size=61
 while draw.textlength(title,font=font(size,True))>935*S:
     size-=1
 text(title,50,91,size,'white',True)
 text('Reliable Judging Across Languages and Modalities',50,168,30,'white')
-text('Washington, DC (hybrid)  /  March 7-9, 2027',50,220,25,'#d8e3eb')
+text('Co-located with ACM TRUST 2027  /  Washington, DC (hybrid)  /  March 7-9, 2027',50,220,23,'#d8e3eb')
 # Scale mark from the flyer.
 line([(1075,86),(1075,183)],MINT,3)
 line([(1043,183),(1107,183)],MINT,3)

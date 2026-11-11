@@ -1,7 +1,8 @@
 # UniJudge @ ACM TRUST 2027
 
-Website for **Universal Judges (UniJudge): Reliable Judging Across Languages and Modalities**,
+Website for **The First Workshop on Universal Judges** (**UniJudge @ ACM TRUST 2027**),
 a full-day workshop at ACM TRUST 2027 (Washington, DC, March 7–9, 2027).
+Theme: Reliable judging across languages and modalities.
 
 Live site: https://acmtrustunijudge.github.io/
 
