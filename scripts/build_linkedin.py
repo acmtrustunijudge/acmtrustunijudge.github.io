@@ -21,6 +21,7 @@ PANEL = '#f0f4f6'
 LINE = '#d5dfe5'
 FONT = Path('/usr/share/fonts/truetype/lato')
 WEBSITE = 'https://acmtrustunijudge.github.io/'
+EMAIL = re.search(r"var EMAIL = '([^']+)'", HTML).group(1)
 
 
 def font(size, bold=False):
@@ -61,7 +62,7 @@ def line(points, color, width=1):
 # Recognizable workshop header, softened to navy and sage.
 box((0,0,1200,266),NAVY)
 box((0,260,1200,266),TEAL)
-text('CALL FOR PAPERS  /  ACM TRUST 2027 WORKSHOP',50,37,23,MINT,True)
+text('CALL FOR PAPERS & REVIEWERS  /  ACM TRUST 2027 WORKSHOP',50,37,23,MINT,True)
 title='Universal Judges (UniJudge)'
 size=61
 while draw.textlength(title,font=font(size,True))>935*S:
@@ -80,8 +81,8 @@ for center in [1020,1130]:
     draw.arc(((center-27)*S,131*S,(center+27)*S,165*S),0,180,fill=MINT,width=3*S)
 
 # Equal-height cards hold only information useful in the feed.
-box((40,298,586,1042),PANEL,22)
-box((610,298,1160,1042),PANEL,22)
+box((40,298,586,916),PANEL,22)
+box((610,298,1160,916),PANEL,22)
 text('Topics of interest',68,331,30,TEAL,True)
 topics=[
  ('Multilingual and low-resource judges','Cross-lingual consistency, transfer, code-switching and cultural criteria.'),
@@ -95,9 +96,6 @@ for title,body in topics:
     end=wrap(body,68,end+11,490,23,30,MUTED)
     assert end <= y+126,(title,end)
     y+=131
-line([(68,936),(558,936)],LINE)
-end=wrap('Also: judge auditing, robustness, bias, calibration and multi-judge disagreement.',68,957,490,22,29,MUTED)
-assert end<1030,end
 
 # Deadlines come from the website.
 text('Key dates',640,331,30,TEAL,True)
@@ -122,15 +120,22 @@ text('What to submit',640,727,28,TEAL,True)
 summary='We welcome long and short papers, with archival and non-archival options. See the website for page limits, formatting, and submission policies.'
 end=wrap(summary,640,775,490,23,30,INK)
 assert end<=910,end
+
+# Reviewer invitation uses the space freed by the condensed cards and footer.
+box((40,940,780,1120),'#eaf3ef',22)
+text('Volunteer to review',68,965,28,TEAL,True)
+end=wrap('Email your OpenReview profile, relevant publications, and areas of expertise.',68,1010,684,23,30,INK)
+assert end<=1070,end
+text(EMAIL,68,1080,24,TEAL,True)
+box((804,940,1160,1120),PANEL,22)
 qr=qrcode.make(WEBSITE,border=2).convert('RGB')
 qr=qr.resize((108*S,108*S),Image.Resampling.NEAREST)
-image.paste(qr,(1022*S,916*S))
-wrap('Scan for the full call and submission links',640,941,350,23,30,NAVY,True)
+image.paste(qr,(928*S,966*S))
 
-# A legible URL is useful when the image is shared without its post text.
-box((0,1072,1200,1200),NAVY)
-text('acmtrustunijudge.github.io',50,1098,35,'white',True)
-text('Full call for papers and submission details',50,1152,23,'#d8e3eb')
+# Keep the website and its QR code outside the reviewer invitation.
+website_label=WEBSITE.removeprefix('https://').rstrip('/')
+x=982-draw.textlength(website_label,font=font(21,True))/S/2
+text(website_label,x,1091,21,NAVY,True)
 image=image.resize((1200,1200),Image.Resampling.LANCZOS)
 image.save(OUT,optimize=True,dpi=(144,144))
 print(f'Created {OUT.name}: 1200 x 1200')
