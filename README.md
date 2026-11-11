@@ -15,7 +15,7 @@ Everything is in `index.html`. The settings most likely to change are in the
 - `ARR_COMMIT_URL`: the ARR commitment link on OpenReview
 - `EMAIL`: the organizer contact address, also used for reviewer interest
 - `DATES`, `LEN_FULL`, `LEN_SHORT`, `WORKSHOP_DAY`: dates and page limits
-- `ORGANIZERS`: organizer cards (add `photo: 'images/name.jpg'`)
+- `ORGANIZERS`: organizer cards (`linkedin` links the name; add `photo: 'images/name.jpg'` for a portrait)
 
 `UniJudge_TRUST2027_CFP.pdf` is the one-page CFP flyer.
 
