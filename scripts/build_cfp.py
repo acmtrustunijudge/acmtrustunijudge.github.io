@@ -112,7 +112,8 @@ left -= 10
 
 # Read deadlines from the website so the flyer stays in sync.
 rows = re.findall(r"\{when:'([^']+)',\s*what:'([^']+)'", source)
-labels = ['Abstract registration', 'Paper submission', 'ARR commitment', 'Acceptance notification', 'Workshop']
+labels = ['Abstract registration', 'Paper submission', 'ARR commitment', 'Acceptance notification',
+          'PMLR camera-ready', 'Workshop']
 assert len(rows) == len(labels), 'Check the deadline list against the website.'
 dates = []
 for label, (when, _) in zip(labels, rows):

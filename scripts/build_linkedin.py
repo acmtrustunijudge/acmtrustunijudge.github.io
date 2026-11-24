@@ -102,7 +102,8 @@ for title,body in topics:
 # Deadlines come from the website.
 text('Key dates',640,331,30,TEAL,True)
 rows=re.findall(r"\{when:'([^']+)',\s*what:'([^']+)'",HTML)
-labels=['Abstract registration','Paper submission','ARR commitment','Acceptance notification','Workshop']
+labels=['Abstract registration','Paper submission','ARR commitment','Acceptance notification',
+        'PMLR camera-ready','Workshop']
 assert len(rows)==len(labels)
 y=399
 for label,(when,_) in zip(labels,rows):
@@ -116,11 +117,11 @@ for label,(when,_) in zip(labels,rows):
     assert x>640+draw.textlength(label,font=font(21.5))/S+8
     text(date,x,y-2,25,INK,True)
     line([(640,y+35),(1130,y+35)],LINE)
-    y+=53
-text('Deadlines: 11:59 PM AoE',640,674,20,MUTED)
-text('What to submit',640,727,28,TEAL,True)
+    y+=47
+text('Deadlines: 11:59 PM AoE',640,y+4,20,MUTED)
+text('What to submit',640,y+46,28,TEAL,True)
 summary='We welcome long and short papers, with archival and non-archival options. See the website for page limits, formatting, and submission policies.'
-end=wrap(summary,640,775,490,23,30,INK)
+end=wrap(summary,640,y+94,490,23,30,INK)
 assert end<=910,end
 
 # Reviewer invitation uses the space freed by the condensed cards and footer.
