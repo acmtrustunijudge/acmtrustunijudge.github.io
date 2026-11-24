@@ -33,11 +33,13 @@ MUTED = HexColor('#536477')
 PANEL = HexColor('#f0f4f6')
 LINE = HexColor('#d5dfe5')
 WEBSITE = 'https://acmtrustunijudge.github.io/'
+QR_SIZE = 60
 
 def setting(name):
     return re.search(r"var " + name + r"\s*=\s*'([^']+)'", source).group(1)
 
 DIRECT, ARR, EMAIL = (setting(n) for n in ['SUBMIT_URL', 'ARR_COMMIT_URL', 'EMAIL'])
+REVIEWER_FORM = re.search(r'id="reviewer-form"[^>]*href="([^"]+)"', source).group(1)
 args.output.parent.mkdir(parents=True, exist_ok=True)
 c = canvas.Canvas(str(args.output), pagesize=(612, 792), pageCompression=1)
 c.setTitle('The First Workshop on Universal Judges: Call for Papers')
@@ -57,6 +59,12 @@ def text(value, x, top, width, size=10.2, leading=14, color=INK, font='Body'):
 
 def heading(value, x, top, width):
     return text(value, x, top, width, 12, 15, TEAL, 'Bold') + 8
+
+def draw_qr(url, x, top):
+    data = BytesIO()
+    qrcode.make(url, border=4).save(data, format='PNG')
+    bottom = 792 - top - QR_SIZE
+    c.drawImage(ImageReader(data), x, bottom, QR_SIZE, QR_SIZE, mask='auto')
 
 # Muted version of the original blue header, with its scales illustration.
 c.setFillColor(HEADER)
@@ -133,18 +141,15 @@ def sidebar():
         c.setStrokeColor(LINE)
         c.setLineWidth(.5)
         c.line(370, 792-right-17, 560, 792-right-17)
-        right += 23
+        right += 21
     right = text('All deadlines: 11:59 PM AoE', 370, right+1, 190, 8, 11, MUTED) + 17
     right = heading('What to submit', 370, right, 190)
     right = text(summary, 370, right, 190, 10, 13.8) + 15
     right = text(f'<link href="{DIRECT}" color="{HEADER.hexval()}"><b>Submit directly via OpenReview</b></link>', 370, right, 190, 9.7, 13) + 7
-    right = text(f'<link href="{ARR}" color="{HEADER.hexval()}"><b>Commit an ARR paper</b></link>', 370, right, 190, 9.7, 13) + 15
-    qr = qrcode.make(WEBSITE, border=2)
-    data = BytesIO()
-    qr.save(data, format='PNG')
-    c.drawImage(ImageReader(data), 370, 792-right-43, 43, 43, mask='auto')
-    text(f'<link href="{WEBSITE}" color="{HEADER.hexval()}">Full call, website and<br/>submission details</link>', 424, right+8, 136, 9, 12.5, MUTED)
-    return right + 56
+    right = text(f'<link href="{ARR}" color="{HEADER.hexval()}"><b>Commit an ARR paper</b></link>', 370, right, 190, 9.7, 13) + 10
+    draw_qr(WEBSITE, 370, right)
+    text(f'<link href="{WEBSITE}" color="{HEADER.hexval()}">Full call, website and<br/>submission details</link>', 442, right+16, 118, 9, 12.5, MUTED)
+    return right + QR_SIZE + 13
 
 # Measure and then draw a fitted sidebar: no fixed-height gaps after edits.
 real_canvas = c
@@ -165,8 +170,15 @@ organizers = re.search(r'var ORGANIZERS = \[(.*?)\];', source, re.S).group(1)
 people = []
 for name, affiliation in re.findall(r"name:'([^']+)', aff:'([^']+)'", organizers):
     people.append(name + (f' ({affiliation})' if affiliation != 'Researcher' else ''))
-y = text('<b>Organizers</b>  ' + ', '.join(people), 40, y, 532, 9, 12.6) + 9
-y = text(f'<b>Contact</b>&nbsp; <link href="mailto:{EMAIL}" color="{TEAL.hexval()}">{EMAIL}</link>&nbsp;&nbsp;&nbsp;&nbsp; <link href="{WEBSITE}" color="{TEAL.hexval()}">Workshop website</link>', 40, y, 532, 9.5, 13)
+draw_qr(REVIEWER_FORM, 40, y)
+reviewer_text_top = heading('Volunteer to review', 112, y + 9, 156)
+reviewer_text_bottom = text(f'<link href="{REVIEWER_FORM}" color="{HEADER.hexval()}"><b>Reviewer interest form</b></link>',
+                            112, reviewer_text_top, 156, 9.7, 13)
+reviewer_bottom = max(y + QR_SIZE, reviewer_text_bottom)
+y = text('<b>Organizers</b>  ' + ', '.join(people), 290, y, 282, 9, 12.6) + 7
+y = text(f'<b>Contact</b>&nbsp; <link href="mailto:{EMAIL}" color="{TEAL.hexval()}">{EMAIL}</link><br/>'
+         f'<link href="{WEBSITE}" color="{TEAL.hexval()}">{WEBSITE}</link>', 290, y, 282, 9.5, 12)
+y = max(y, reviewer_bottom)
 if y > 760:
     raise RuntimeError(f'Flyer content extends past the bottom margin: {y:.1f}pt')
 c.showPage()

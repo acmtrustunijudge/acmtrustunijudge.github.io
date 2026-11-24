@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 HTML = (ROOT / 'index.html').read_text()
 OUT = ROOT / 'UniJudge_TRUST2027_CFP_LinkedIn.png'
 S = 2
+QR_SIZE = 136
 image = Image.new('RGB', (1200*S, 1200*S), '#ffffff')
 draw = ImageDraw.Draw(image)
 NAVY = '#293e52'
@@ -21,7 +22,7 @@ PANEL = '#f0f4f6'
 LINE = '#d5dfe5'
 FONT = Path('/usr/share/fonts/truetype/lato')
 WEBSITE = 'https://acmtrustunijudge.github.io/'
-EMAIL = re.search(r"var EMAIL = '([^']+)'", HTML).group(1)
+REVIEWER_FORM = re.search(r'id="reviewer-form"[^>]*href="([^"]+)"', HTML).group(1)
 
 
 def font(size, bold=False):
@@ -57,6 +58,12 @@ def box(bounds, fill, radius=0):
 
 def line(points, color, width=1):
     draw.line([(round(x*S),round(y*S)) for x,y in points], fill=color, width=round(width*S))
+
+
+def draw_qr(url, x, y):
+    qr = qrcode.make(url, border=4).convert('RGB')
+    qr = qr.resize((QR_SIZE*S, QR_SIZE*S), Image.Resampling.NEAREST)
+    image.paste(qr, (x*S, y*S))
 
 
 # Recognizable workshop header, softened to navy and sage.
@@ -126,14 +133,12 @@ assert end<=910,end
 
 # Reviewer invitation uses the space freed by the condensed cards and footer.
 box((40,940,780,1120),'#eaf3ef',22)
-text('Volunteer to review',68,965,28,TEAL,True)
-end=wrap('Email your OpenReview profile, relevant publications, and areas of expertise.',68,1010,684,23,30,INK)
-assert end<=1070,end
-text(EMAIL,68,1080,24,TEAL,True)
+draw_qr(REVIEWER_FORM,68,950)
+reviewer_text_x=68+QR_SIZE+26
+text('Volunteer to review',reviewer_text_x,984,28,TEAL,True)
+text('Scan to open the reviewer interest form.',reviewer_text_x,1030,23,INK)
 box((804,940,1160,1120),PANEL,22)
-qr=qrcode.make(WEBSITE,border=2).convert('RGB')
-qr=qr.resize((108*S,108*S),Image.Resampling.NEAREST)
-image.paste(qr,(928*S,966*S))
+draw_qr(WEBSITE,982-QR_SIZE//2,950)
 
 # Keep the website and its QR code outside the reviewer invitation.
 website_label=WEBSITE.removeprefix('https://').rstrip('/')
