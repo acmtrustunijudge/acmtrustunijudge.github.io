@@ -213,6 +213,7 @@
   .pc{display:flex;flex-wrap:wrap;gap:8px;}
   .pc-more{margin:0 0 12px;font-size:14.5px;color:var(--ink-2);}
   .contact{margin:0;font-size:16px;color:var(--ink-2);max-width:66ch;}
+  #reviewer-form + .contact{margin-top:12px;}
 
   @media (max-width:1000px){ .orgs{grid-template-columns:repeat(2,1fr);} }
   @media (max-width:980px){ .nav{display:none;} }
@@ -477,8 +478,9 @@
 <section id="committee">
   <div class="shell" id="contact">
     <p class="k">Reviewing &amp; contact</p>
-    <p class="pc-more">To volunteer as a reviewer, send your OpenReview profile, relevant publications, and areas of expertise.</p>
-    <p class="contact"><a class="js-mail" href="mailto:acmtrustunijudge@gmail.com">acmtrustunijudge@gmail.com</a></p>
+    <p class="pc-more">Interested in reviewing for UniJudge? Fill out the reviewer interest form.</p>
+    <a id="reviewer-form" class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLSeFGKPntPE2-6BuJxVOryvm3bFtxgVtr-ETpaoILLtRm2xNQQ/viewform" target="_blank" rel="noopener">Reviewer interest form</a>
+    <p class="contact">Questions? <a class="js-mail" href="mailto:acmtrustunijudge@gmail.com">acmtrustunijudge@gmail.com</a></p>
   </div>
 </section>
 

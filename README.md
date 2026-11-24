@@ -13,9 +13,12 @@ Everything is in `index.html`. The settings most likely to change are in the
 
 - `SUBMIT_URL`: the direct submission link on OpenReview
 - `ARR_COMMIT_URL`: the ARR commitment link on OpenReview
-- `EMAIL`: the organizer contact address, also used for reviewer interest
+- `EMAIL`: the organizer contact address
 - `DATES`, `LEN_FULL`, `LEN_SHORT`, `WORKSHOP_DAY`: dates and page limits
 - `ORGANIZERS`: organizer cards (`linkedin` links the name; add `photo: 'images/name.jpg'` for a portrait)
+
+Edit the `reviewer-form` link in the Reviewing & Contact section to update the
+Google Form linked from the website.
 
 `UniJudge_TRUST2027_CFP.pdf` is the one-page CFP flyer.
 
